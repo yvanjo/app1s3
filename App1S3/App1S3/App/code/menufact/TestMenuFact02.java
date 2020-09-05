@@ -25,6 +25,7 @@ public class TestMenuFact02 {
         Ingredient viande = new Viande("solide");
         Ingredient laitier  = new Laitier("liquide");
         Ingredient epice = new Epice("solide");
+        Ingredient epice2 = new Epice("asopfjepij");
 
         /*
             création de l'inventaire des ingredients dans le restaurant
