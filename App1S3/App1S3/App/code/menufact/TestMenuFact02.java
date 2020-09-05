@@ -125,7 +125,7 @@ public class TestMenuFact02 {
 
 
         t.test1_AffichePlatsAuMenu(trace, p1,p2,p3,p4,p5);
-        t. test2_AffichePlatsSante(trace, ps1,ps2,ps3,ps4,ps5);
+        t.test2_AffichePlatsSante(trace, ps1,ps2,ps3,ps4,ps5);
 
         t.test4_AjoutPlatsAuMenu(trace, m1, p1, p2, ps1, ps2, m2, p3, p4, ps3, ps4);
 
