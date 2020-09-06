@@ -1,8 +1,12 @@
 package menufact.plats;
 
-public class platEnfantCreate implements CreatorPlat {
+import inventaire.Inventaire;
+
+public class platEnfantCreate extends CreatorPlat {
+
     @Override
-    public plat createPlats(int code, String description, double prix, double proportion, Inventaire Composition) {
-        return new PlatEnfant(code,description,prix,proportion,Composition);
+    public PlatAuMenu createPlats(int code, String description, double prix, double kcal, double chol, double gras, Inventaire Composition) {
+        return new PlatEnfant(code, description,prix,0.00,0.00,gras,Composition);
     }
+
 }

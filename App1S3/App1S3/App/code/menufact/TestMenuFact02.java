@@ -6,12 +6,8 @@ import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
 import menufact.exceptions.MenuException;
 import menufact.facture.Facture;
-import menufact.plats.CreatorPlat;
-import menufact.plats.PlatAuMenu;
-import menufact.plats.PlatChoisi;
-import menufact.plats.PlatSante;
+import menufact.plats.*;
 import inventaire.Inventaire;
-import menufact.plats.platSanteCreate;
 
 public class TestMenuFact02 {
 
@@ -103,18 +99,19 @@ public class TestMenuFact02 {
                 /*
         Création des plats au menu
          */
+        CreatorPlat createurDePlat = new platMenu();
 
-        PlatAuMenu p1 = new PlatAuMenu(0,"PlatAuMenu0",10,CompositionP1);
-        PlatAuMenu p2 = new PlatAuMenu(1,"PlatAuMenu1",20,CompositionP2);
-        PlatAuMenu p3 = new PlatAuMenu(2,"PlatAuMenu2",30,CompositionP3);
-        PlatAuMenu p4 = new PlatAuMenu(3,"PlatAuMenu3",40,CompositionP4);
-        PlatAuMenu p5 = new PlatAuMenu(4,"PlatAuMenu4",50,CompositionP5);
+        PlatAuMenu p1 = createurDePlat.renderPlat(0,"PlatAuMenu0",10,CompositionP1);
+        PlatAuMenu p2 = createurDePlat.renderPlat(1,"PlatAuMenu1",20,CompositionP2);
+        PlatAuMenu p3 = createurDePlat.renderPlat(2,"PlatAuMenu2",30,CompositionP3);
+        PlatAuMenu p4 = createurDePlat.renderPlat(3,"PlatAuMenu3",40,CompositionP4);
+        PlatAuMenu p5 = createurDePlat.renderPlat(4,"PlatAuMenu4",50,CompositionP5);
 
-        platSante ps1 = platSanteCreate.createPlats(10,"PlatSante0",10,11,11,11,CompositionP1);
-        PlatSante ps2 = platSanteCreate.createPlats(11,"PlatSante1",20,11,11,11,CompositionP2);
-        PlatSante ps3 = platSanteCreate.createPlats(12,"PlatSante2",30,11,11,11,CompositionP3);
-        PlatSante ps4 = platSanteCreate.createPlats(13,"PlatSante3",40,11,11,11,CompositionP4);
-        PlatSante ps5 = platSanteCreate.createPlats(14,"PlatSante4",50,11,11,11,CompositionP5);
+        PlatAuMenu ps1 = createurDePlat.renderPlat(10,"PlatSante0",10,11,11,11,CompositionP1);
+        PlatAuMenu ps2 = createurDePlat.renderPlat(11,"PlatSante1",20,11,11,11,CompositionP2);
+        PlatAuMenu ps3 = createurDePlat.renderPlat(12,"PlatSante2",30,11,11,11,CompositionP3);
+        PlatAuMenu ps4 = createurDePlat.renderPlat(13,"PlatSante3",40,11,11,11,CompositionP4);
+        PlatAuMenu ps5 = createurDePlat.renderPlat(14,"PlatSante4",50,11,11,11,CompositionP5);
 
 
         Menu m1 = new Menu("menufact.Menu 1");
@@ -196,7 +193,7 @@ public class TestMenuFact02 {
     }
 
     private void test1_AffichePlatsAuMenu(boolean trace, PlatAuMenu p1, PlatAuMenu p2,
-                                                 PlatAuMenu p3, PlatAuMenu p4, PlatAuMenu p5)
+                                          PlatAuMenu p3, PlatAuMenu p4, PlatAuMenu p5)
     {
         System.out.println("=== test1_AffichePlatsAuMenu");
         if(trace)
@@ -210,8 +207,8 @@ public class TestMenuFact02 {
     }
 
 
-   private void test2_AffichePlatsSante(boolean trace, PlatSante ps1, PlatSante ps2,
-                                               PlatSante ps3, PlatSante ps4, PlatSante ps5)
+   private void test2_AffichePlatsSante(boolean trace, PlatAuMenu ps1, PlatAuMenu ps2,
+                                        PlatAuMenu ps3, PlatAuMenu ps4, PlatAuMenu ps5)
     {
         System.out.println("=== test2_AffichePlatsSante");
 
@@ -240,10 +237,10 @@ public class TestMenuFact02 {
 
     private void test4_AjoutPlatsAuMenu(boolean trace, Menu m1,
                                         PlatAuMenu p1, PlatAuMenu p2,
-                                        PlatSante ps1, PlatSante ps2,
+                                        PlatAuMenu ps1, PlatAuMenu ps2,
                                         Menu m2,
                                         PlatAuMenu p3, PlatAuMenu p4,
-                                        PlatSante ps3, PlatSante ps4)
+                                        PlatAuMenu ps3, PlatAuMenu ps4)
     {
         System.out.println("=== test4_AjoutPlatsAuMenu");
         System.out.println("=== Ajout de plats au menu 1");

@@ -2,13 +2,13 @@ package menufact.plats;
 
 import inventaire.Inventaire;
 
-public class PlatAuMenu implements plat{
+public class PlatAuMenu {
     private int code;
     private String description;
     private double prix;
     private Inventaire composition;
 
-    public PlatAuMenu(int code, String description, double prix, Inventaire composition) {
+    public PlatAuMenu(int code, String description, double prix, double filler1, double filler2, double filler3, Inventaire composition) {
         this.code = code;
         this.description = description;
         this.prix = prix;
