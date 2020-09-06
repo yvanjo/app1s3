@@ -1,8 +1,17 @@
 package ingredients;
 
 public class Viande extends Ingredient{
-    public Viande(String s) {
+
+    private static Viande instance;
+
+    private Viande(String s) {
         setStateIngredient(s);
         setTypeIngredient(TypeIngredient.VIANDE);
+    }
+
+    public static Viande getInstanceViande(String s){
+        if(instance==null)
+            instance = new Viande(s);
+        return instance;
     }
 }

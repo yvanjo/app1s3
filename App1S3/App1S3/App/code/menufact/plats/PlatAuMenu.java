@@ -2,7 +2,7 @@ package menufact.plats;
 
 import inventaire.Inventaire;
 
-public class PlatAuMenu {
+public class PlatAuMenu implements plat{
     private int code;
     private String description;
     private double prix;

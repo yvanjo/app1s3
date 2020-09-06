@@ -6,10 +6,12 @@ import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
 import menufact.exceptions.MenuException;
 import menufact.facture.Facture;
+import menufact.plats.CreatorPlat;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
 import inventaire.Inventaire;
+import menufact.plats.platSanteCreate;
 
 public class TestMenuFact02 {
 
@@ -20,12 +22,12 @@ public class TestMenuFact02 {
         /*
         Création des instances des différents ingrédients
         */
-        Ingredient fruit = new Fruit("solide");
-        Ingredient legume = new Legume("solide");
-        Ingredient viande = new Viande("solide");
-        Ingredient laitier  = new Laitier("liquide");
-        Ingredient epice = new Epice("solide");
-        Ingredient epice2 = new Epice("asopfjepij");
+        Ingredient fruit = Fruit.getInstanceFruit("solide");
+        Ingredient legume = Legume.getInstanceLegume("solide");
+        Ingredient viande = Viande.getInstanceViande("solide");
+        Ingredient laitier  = Laitier.getInstanceLaitier("liquide");
+        Ingredient epice = Epice.getInstanceEpice("solide");
+        Ingredient epice2 = Epice.getInstanceEpice("asopfjepij");
 
         /*
             création de l'inventaire des ingredients dans le restaurant
@@ -108,11 +110,11 @@ public class TestMenuFact02 {
         PlatAuMenu p4 = new PlatAuMenu(3,"PlatAuMenu3",40,CompositionP4);
         PlatAuMenu p5 = new PlatAuMenu(4,"PlatAuMenu4",50,CompositionP5);
 
-        PlatSante ps1 = new PlatSante(10,"PlatSante0",10,11,11,11,CompositionP1);
-        PlatSante ps2 = new PlatSante(11,"PlatSante1",20,11,11,11,CompositionP2);
-        PlatSante ps3 = new PlatSante(12,"PlatSante2",30,11,11,11,CompositionP3);
-        PlatSante ps4 = new PlatSante(13,"PlatSante3",40,11,11,11,CompositionP4);
-        PlatSante ps5 = new PlatSante(14,"PlatSante4",50,11,11,11,CompositionP5);
+        platSante ps1 = platSanteCreate.createPlats(10,"PlatSante0",10,11,11,11,CompositionP1);
+        PlatSante ps2 = platSanteCreate.createPlats(11,"PlatSante1",20,11,11,11,CompositionP2);
+        PlatSante ps3 = platSanteCreate.createPlats(12,"PlatSante2",30,11,11,11,CompositionP3);
+        PlatSante ps4 = platSanteCreate.createPlats(13,"PlatSante3",40,11,11,11,CompositionP4);
+        PlatSante ps5 = platSanteCreate.createPlats(14,"PlatSante4",50,11,11,11,CompositionP5);
 
 
         Menu m1 = new Menu("menufact.Menu 1");

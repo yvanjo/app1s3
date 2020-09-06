@@ -15,11 +15,11 @@ public class IngredientTest1 {
      */
     public void test1() throws IngredientException {
         Boolean succeed = true;
-        Ingredient fruit = new Fruit("liquid");
-        Ingredient viande = new Viande("liquid");
-        Ingredient legume = new Legume("liquid");
-        Ingredient laitier = new Laitier("liquid");
-        Ingredient epice = new Epice("liquid");
+        Ingredient fruit = Fruit.getInstanceFruit("liquid");
+        Ingredient viande = Viande.getInstanceViande("liquid");
+        Ingredient legume = Legume.getInstanceLegume("liquid");
+        Ingredient laitier = Laitier.getInstanceLaitier("liquid");
+        Ingredient epice = Epice.getInstanceEpice("liquid");
         IngredientInventaire ingredientInventaireFruit = new IngredientInventaire(fruit ,134.00);
         IngredientInventaire ingredientInventaireViande = new IngredientInventaire(viande ,132344.60);
         IngredientInventaire ingredientInventaireLegume = new IngredientInventaire(legume ,123434.60);
@@ -45,4 +45,36 @@ public class IngredientTest1 {
         assertEquals(true ,succeed);
     }
 
+    @org.junit.Test
+
+    public void test2() throws IngredientException{
+        Boolean good = true;
+        Ingredient epice = Epice.getInstanceEpice("Solide");
+        Ingredient epice2 = Epice.getInstanceEpice("Solide");
+        Ingredient fruit = Fruit.getInstanceFruit("solide");
+        Ingredient fruit2 = Fruit.getInstanceFruit("solide");
+        Ingredient legume = Legume.getInstanceLegume("solide");
+        Ingredient legume2 = Legume.getInstanceLegume("solide");
+        Ingredient laitier = Laitier.getInstanceLaitier("liquide");
+        Ingredient laitier2 = Laitier.getInstanceLaitier("liquide");
+
+        if(epice.hashCode()==epice.hashCode()) {
+            good = true;
+        }
+
+        if(fruit.hashCode()==fruit2.hashCode()){
+            good = true;
+        }
+
+        if(legume.hashCode()==legume2.hashCode())
+        {
+            good = true;
+        }
+
+        if(laitier.hashCode()==laitier2.hashCode()){
+            good = true;
+        }
+        assertEquals(true,good);
+
+    }
 }
