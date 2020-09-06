@@ -1,7 +1,9 @@
 package menufact;
 
 import Chef.Chef;
+
 import ingredients.*;
+
 import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
 import menufact.exceptions.MenuException;
@@ -66,9 +68,9 @@ public class TestMenuFact02 {
         Création des inventaire des différent ingrédient dans un plat
          */
         //P1
-        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,1);
-        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,1);
-        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume,1);
+        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,6);
+        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,6);
+        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume,6);
         //p2
         IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit,1);
         IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande,1);
@@ -323,7 +325,7 @@ public class TestMenuFact02 {
         }
     }
 
-    private void test7_CreerFacture(Facture f1, Menu m1) throws FactureException, IngredientException {
+    private void test7_CreerFacture(Facture f1, Menu m1) throws FactureException, IngredientException{
         System.out.println("===test7_CreerFacture");
 
         PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());

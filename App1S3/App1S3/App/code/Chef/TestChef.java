@@ -29,4 +29,14 @@ public class TestChef {
         assertEquals(true,succeed);
     }
 
+    @org.junit.Test
+    /*
+        Here Test ChainOfResponsibility
+     */
+    public void test2() throws IngredientException
+    {
+
+
+    }
+
 }

@@ -133,9 +133,6 @@ public class Facture {
      */
     public void ajoutePlat(PlatChoisi p) throws FactureException, IngredientException {
 
-        if(p.getEtat() == "Impossible"){
-            throw new IngredientException("Impossible");
-        }
         if (etat == FactureEtat.OUVERTE) {
             platchoisi.add(p);
             chief.Work(this,p);

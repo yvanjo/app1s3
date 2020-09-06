@@ -7,7 +7,7 @@ import menufact.plats.PlatAuMenu;
 public class PlatChoisi {
     private PlatAuMenu plat;
     private int quantite;
-    private String etat;
+
     private Inventaire inventaire;
     public PlatChoisi(PlatAuMenu plat, int quantite, Inventaire inventaire) {
         this.plat = plat;
@@ -18,16 +18,6 @@ public class PlatChoisi {
     public Inventaire getInventaire()
     {
        return inventaire;
-    }
-
-    public void setState(String etat)
-    {
-        this.etat = etat;
-    }
-
-    public String getEtat()
-    {
-        return etat;
     }
 
     @Override
