@@ -12,14 +12,15 @@ public class IngredientTest1 {
     /*
         Test de validation des quantitées
         il faut s'assurer que toute les méthodes peuvent acceder à leur quantité
+        mettre un try catch!!!!!!!!!!!!!!!!!!
      */
     public void test1() throws IngredientException {
         Boolean succeed = true;
-        Ingredient fruit = Fruit.getInstanceFruit("liquid");
-        Ingredient viande = Viande.getInstanceViande("liquid");
-        Ingredient legume = Legume.getInstanceLegume("liquid");
-        Ingredient laitier = Laitier.getInstanceLaitier("liquid");
-        Ingredient epice = Epice.getInstanceEpice("liquid");
+        Ingredient fruit = new Fruit("liquid");
+        Ingredient viande = new Viande("liquid");
+        Ingredient legume = new Legume("liquid");
+        Ingredient laitier = new Laitier("liquid");
+        Ingredient epice = new Epice("liquid");
         IngredientInventaire ingredientInventaireFruit = new IngredientInventaire(fruit ,134.00);
         IngredientInventaire ingredientInventaireViande = new IngredientInventaire(viande ,132344.60);
         IngredientInventaire ingredientInventaireLegume = new IngredientInventaire(legume ,123434.60);

@@ -1,6 +1,7 @@
 package menufact;
 
 import Chef.Chef;
+import Chef.ChefException;
 import ingredients.*;
 import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
@@ -11,7 +12,7 @@ import inventaire.Inventaire;
 
 public class TestMenuFact02 {
 
-    public static void main(String[] args) throws IngredientException {
+    public static void main(String[] args) throws IngredientException, FactureException {
         boolean trace = true;
 
         TestMenuFact02 t = new TestMenuFact02();
@@ -64,9 +65,9 @@ public class TestMenuFact02 {
         Création des inventaire des différent ingrédient dans un plat
          */
         //P1
-        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,1);
-        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,1);
-        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume,1);
+        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,6);
+        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,6);
+        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume,6);
         //p2
         IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit,1);
         IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande,1);
@@ -99,7 +100,6 @@ public class TestMenuFact02 {
                 /*
         Création des plats au menu
          */
-        CreatorPlat createurDePlat = new platMenu();
 
         PlatAuMenu p1 = createurDePlat.renderPlat(0,"PlatAuMenu0",10,CompositionP1);
         PlatAuMenu p2 = createurDePlat.renderPlat(1,"PlatAuMenu1",20,CompositionP2);
@@ -144,7 +144,7 @@ public class TestMenuFact02 {
 
         try {
             t.test7_CreerFacture(f1, m1);
-        } catch (FactureException | IngredientException e) {
+        } catch (FactureException | IngredientException | ChefException e) {
             System.out.println(e.getMessage());
         }
 
@@ -160,13 +160,15 @@ public class TestMenuFact02 {
         catch (MenuException me)
         {
             System.out.println(me);
+        } catch (ChefException e) {
+            e.printStackTrace();
         }
 
         t.test9_PayerFacture(f1);
 
         try {
             t.test8_AjouterPlatsFacture(f1, m1,1);
-        } catch (FactureException | IngredientException fe)
+        } catch (FactureException | IngredientException | ChefException fe)
         {
             System.out.println(fe.getMessage());
         }
@@ -322,7 +324,7 @@ public class TestMenuFact02 {
         }
     }
 
-    private void test7_CreerFacture(Facture f1, Menu m1) throws FactureException, IngredientException {
+    private void test7_CreerFacture(Facture f1, Menu m1) throws FactureException, IngredientException, ChefException {
         System.out.println("===test7_CreerFacture");
 
         PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());
@@ -330,7 +332,7 @@ public class TestMenuFact02 {
         {
             f1.ajoutePlat(platChoisi);
         }
-        catch (FactureException | IngredientException fe)
+        catch (FactureException | IngredientException | ChefException fe)
         {
             throw fe;
         }
@@ -338,12 +340,12 @@ public class TestMenuFact02 {
     }
 
 
-    private void test8_AjouterClientFacture(Facture f1,Client c1) {
+    private void test8_AjouterClientFacture(Facture f1,Client c1) throws FactureException {
         System.out.println("===test8_AjouterClientFacture");
         f1.associerClient(c1);
         System.out.println(f1);
     }
-    private void test8_AjouterPlatsFacture(Facture f1, Menu m1, int pos) throws MenuException, FactureException, IngredientException {
+    private void test8_AjouterPlatsFacture(Facture f1, Menu m1, int pos) throws MenuException, FactureException, IngredientException, ChefException {
         System.out.println("===test8_AjouterPlatsFacture");
 
         try{
@@ -360,7 +362,7 @@ public class TestMenuFact02 {
         {
             f1.ajoutePlat(platChoisi);
         }
-        catch (FactureException | IngredientException fe)
+        catch (FactureException | IngredientException | ChefException fe)
         {
             throw fe;
         }

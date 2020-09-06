@@ -3,7 +3,7 @@ package menufact.plats;
 import inventaire.Inventaire;
 import menufact.plats.PlatAuMenu;
 
-public class PlatSante extends PlatAuMenu {
+public class   PlatSante extends PlatAuMenu {
     private double kcal;
     private double chol;
     private double gras;
