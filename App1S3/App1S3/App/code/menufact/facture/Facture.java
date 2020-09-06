@@ -1,6 +1,7 @@
 package menufact.facture;
 
 import Chef.Chef;
+import Chef.ChefException;
 import ingredients.exceptions.IngredientException;
 import menufact.Client;
 import menufact.facture.exceptions.FactureException;
@@ -131,7 +132,7 @@ public class Facture {
      * @param p un plat choisi
      * @throws FactureException Seulement si la facture est OUVERTE
      */
-    public void ajoutePlat(PlatChoisi p) throws FactureException, IngredientException {
+    public void ajoutePlat(PlatChoisi p) throws FactureException, IngredientException, ChefException {
 
         if (etat == FactureEtat.OUVERTE) {
             platchoisi.add(p);
