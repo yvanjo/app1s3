@@ -12,6 +12,7 @@ public class IngredientTest1 {
     /*
         Test de validation des quantitées
         il faut s'assurer que toute les méthodes peuvent acceder à leur quantité
+        mettre un try catch!!!!!!!!!!!!!!!!!!
      */
     public void test1() throws IngredientException {
         Boolean succeed = true;

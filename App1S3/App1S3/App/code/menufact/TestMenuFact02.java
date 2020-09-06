@@ -15,7 +15,7 @@ import inventaire.Inventaire;
 
 public class TestMenuFact02 {
 
-    public static void main(String[] args) throws IngredientException {
+    public static void main(String[] args) throws IngredientException, FactureException {
         boolean trace = true;
 
         TestMenuFact02 t = new TestMenuFact02();
@@ -103,6 +103,7 @@ public class TestMenuFact02 {
                 /*
         Création des plats au menu
          */
+
 
         PlatAuMenu p1 = new PlatAuMenu(0,"PlatAuMenu0",10,CompositionP1);
         PlatAuMenu p2 = new PlatAuMenu(1,"PlatAuMenu1",20,CompositionP2);
@@ -343,7 +344,7 @@ public class TestMenuFact02 {
     }
 
 
-    private void test8_AjouterClientFacture(Facture f1,Client c1) {
+    private void test8_AjouterClientFacture(Facture f1,Client c1) throws FactureException {
         System.out.println("===test8_AjouterClientFacture");
         f1.associerClient(c1);
         System.out.println(f1);
