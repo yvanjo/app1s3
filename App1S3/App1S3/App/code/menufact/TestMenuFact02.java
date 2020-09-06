@@ -101,17 +101,20 @@ public class TestMenuFact02 {
         Création des plats au menu
          */
 
-        PlatAuMenu p1 = createurDePlat.renderPlat(0,"PlatAuMenu0",10,CompositionP1);
-        PlatAuMenu p2 = createurDePlat.renderPlat(1,"PlatAuMenu1",20,CompositionP2);
-        PlatAuMenu p3 = createurDePlat.renderPlat(2,"PlatAuMenu2",30,CompositionP3);
-        PlatAuMenu p4 = createurDePlat.renderPlat(3,"PlatAuMenu3",40,CompositionP4);
-        PlatAuMenu p5 = createurDePlat.renderPlat(4,"PlatAuMenu4",50,CompositionP5);
+        CreatorPlat createurDePlatAuMenu = new platMenu();
+        PlatAuMenu p1 = createurDePlatAuMenu.renderPlat(0,"PlatAuMenu0",10,CompositionP1);
+        PlatAuMenu p2 = createurDePlatAuMenu.renderPlat(1,"PlatAuMenu1",20,CompositionP2);
+        PlatAuMenu p3 = createurDePlatAuMenu.renderPlat(2,"PlatAuMenu2",30,CompositionP3);
+        PlatAuMenu p4 = createurDePlatAuMenu.renderPlat(3,"PlatAuMenu3",40,CompositionP4);
+        PlatAuMenu p5 = createurDePlatAuMenu.renderPlat(4,"PlatAuMenu4",50,CompositionP5);
 
-        PlatAuMenu ps1 = createurDePlat.renderPlat(10,"PlatSante0",10,11,11,11,CompositionP1);
-        PlatAuMenu ps2 = createurDePlat.renderPlat(11,"PlatSante1",20,11,11,11,CompositionP2);
-        PlatAuMenu ps3 = createurDePlat.renderPlat(12,"PlatSante2",30,11,11,11,CompositionP3);
-        PlatAuMenu ps4 = createurDePlat.renderPlat(13,"PlatSante3",40,11,11,11,CompositionP4);
-        PlatAuMenu ps5 = createurDePlat.renderPlat(14,"PlatSante4",50,11,11,11,CompositionP5);
+        CreatorPlat createurDePlatSante = new platSanteCreate();
+
+        PlatAuMenu ps1 = createurDePlatSante.renderPlat(10,"PlatSante0",10,11,11,11,CompositionP1);
+        PlatAuMenu ps2 = createurDePlatSante.renderPlat(11,"PlatSante1",20,11,11,11,CompositionP2);
+        PlatAuMenu ps3 = createurDePlatSante.renderPlat(12,"PlatSante2",30,11,11,11,CompositionP3);
+        PlatAuMenu ps4 = createurDePlatSante.renderPlat(13,"PlatSante3",40,11,11,11,CompositionP4);
+        PlatAuMenu ps5 = createurDePlatSante.renderPlat(14,"PlatSante4",50,11,11,11,CompositionP5);
 
 
         Menu m1 = new Menu("menufact.Menu 1");

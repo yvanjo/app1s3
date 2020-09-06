@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
 public class TestFacture {
     @org.junit.Test
     public void Test1() throws IngredientException {
-        Ingredient fruit = new Fruit("solide");
-        Ingredient legume = new Legume("solide");
-        Ingredient viande = new Viande("solide");
-        Ingredient laitier  = new Laitier("liquide");
-        Ingredient epice = new Epice("solide");
+        Ingredient fruit = Fruit.getInstanceFruit("solide");
+        Ingredient legume = Legume.getInstanceLegume("solide");
+        Ingredient viande = Viande.getInstanceViande("solide");
+        Ingredient laitier  = Laitier.getInstanceLaitier("liquide");
+        Ingredient epice = Epice.getInstanceEpice("solide");
 
         Inventaire inventaireIngrediant = new Inventaire();
 
