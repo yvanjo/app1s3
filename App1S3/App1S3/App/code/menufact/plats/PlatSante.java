@@ -9,7 +9,7 @@ public class   PlatSante extends PlatAuMenu {
     private double gras;
 
     public PlatSante(int code, String description, double prix, double kcal, double chol, double gras, Inventaire Composition) {
-        super(code, description, prix,0.00,0.00,0.00,Composition);
+        super(code, description, prix,Composition);
         this.kcal = kcal;
         this.chol = chol;
         this.gras = gras;
