@@ -39,6 +39,7 @@ public class     TestChef {
 
     /*
         Here Test Chain Of Responsibility
+        this test is extremely long because it needs to load a lot of stuff
 */
 
     public void test2() throws IngredientException, MenuException, FactureException, ChefException {
@@ -338,11 +339,61 @@ public class     TestChef {
 
 
         assertEquals(true, succeed);
+    }
+    @org.junit.Test
+    /*
+    Subscribe
+     */
+    public void Test3()
+    {
+        Boolean succeed =true;
+        Inventaire Composition =new Inventaire();
+        Inventaire GardeManger = new Inventaire();
+        platMenuCreate platMenu = new platMenuCreate();
+        PlatAuMenu monPlatAuMenu = platMenu.createPlats(1,"un bon risoto",20.00,Composition);
+        Menu m1 = new Menu("un menu");
+        m1.ajoute(monPlatAuMenu);
+        Chef chef = Chef.getInstance("Stephanie",GardeManger);
+        chef.Subscribe(m1);
+        assertEquals(1,chef.getSubscribers().size());
 
     }
+    @org.junit.Test
+    /*
+    Subscribe
+     */
+    public void Test4()
+    {
+        Boolean succeed =true;
+        Inventaire Composition =new Inventaire();
+        Inventaire GardeManger = new Inventaire();
+        platMenuCreate platMenu = new platMenuCreate();
+        PlatAuMenu monPlatAuMenu = platMenu.createPlats(1,"un bon risoto",20.00,Composition);
+        Menu m1 = new Menu("un menu");
+        m1.ajoute(monPlatAuMenu);
+        Chef chef = Chef.getInstance("Stephanie",GardeManger);
+        chef.Subscribe(m1);
+        chef.UnSubscribe(m1);
+        assertEquals(0,chef.getSubscribers().size());
 
+    }
+    @org.junit.Test
+    /*
+        Test Observer
+     */
+    public void Test5()
+    {
+        Boolean succeed =true;
+        Inventaire Composition =new Inventaire();
+        Inventaire GardeManger = new Inventaire();
+        platMenuCreate platMenu = new platMenuCreate();
+        PlatAuMenu monPlatAuMenu = platMenu.createPlats(1,"un bon risoto",20.00,Composition);
+        Menu m1 = new Menu("un menu");
+        m1.ajoute(monPlatAuMenu);
+        Chef chef = Chef.getInstance("Stephanie",GardeManger);
+        chef.Subscribe(m1);
+        chef.notifier(monPlatAuMenu);
+        assertEquals(0,m1.getMenu().size());
 
-
-
-
+    }
 }

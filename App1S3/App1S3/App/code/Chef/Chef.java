@@ -28,6 +28,10 @@ public class Chef {
         this.inventaire = inventaire;
     }
 
+    public ArrayList<Subscriber> getSubscribers(){
+        return subscribers;
+    }
+
     public void Subscribe(Subscriber subs)
     {
         subscribers.add(subs);
