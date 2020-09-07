@@ -8,7 +8,9 @@ import inventaire.Inventaire;
 import static org.junit.Assert.*;
 
 public class TestFacture {
+    /*
     @org.junit.Test
+
     public void Test1() throws IngredientException {
         Ingredient fruit = Fruit.getInstanceFruit("solide");
         Ingredient legume = Legume.getInstanceLegume("solide");
@@ -27,4 +29,6 @@ public class TestFacture {
 
 
     }
+    */
+
 }

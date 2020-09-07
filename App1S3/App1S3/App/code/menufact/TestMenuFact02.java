@@ -19,12 +19,21 @@ public class TestMenuFact02 {
         /*
         Création des instances des différents ingrédients
         */
-        Ingredient fruit = Fruit.getInstanceFruit("solide");
-        Ingredient legume = Legume.getInstanceLegume("solide");
-        Ingredient viande = Viande.getInstanceViande("solide");
-        Ingredient laitier  = Laitier.getInstanceLaitier("liquide");
-        Ingredient epice = Epice.getInstanceEpice("solide");
-        Ingredient epice2 = Epice.getInstanceEpice("asopfjepij");
+        CreatorIngredient godOfIngredientsEpice = new ConcretCreatorEpice();
+        CreatorIngredient godOfIngredientsFruit = new ConcretCreatorFruit();
+        CreatorIngredient godOfIngredientsLegume = new ConcretCreatorLegume();
+        CreatorIngredient godOfIngredientsLaitier = new ConcretCreatorLaitier();
+        CreatorIngredient godOfIngredientsViande = new ConcretCreatorViande();
+        Ingredient fruit1 = godOfIngredientsFruit.CreateMethod("Orange","solid");
+        Ingredient fruit2 = godOfIngredientsFruit.CreateMethod("Jus","liquid");
+        Ingredient epice1 = godOfIngredientsEpice.CreateMethod("Paprika","liquid");
+        Ingredient epice2 = godOfIngredientsEpice.CreateMethod("JusEpice","solid");
+        Ingredient viande1 = godOfIngredientsViande.CreateMethod("Steak","solid");
+        Ingredient viande2 = godOfIngredientsViande.CreateMethod("Jambon","solid");
+        Ingredient laitier1  = godOfIngredientsLaitier.CreateMethod("Lait","liquid");
+        Ingredient laitier2  = godOfIngredientsLaitier.CreateMethod("Fromage","solid");
+        Ingredient legume1 = godOfIngredientsLegume.CreateMethod("Carrot","solid");
+        Ingredient legume2 = godOfIngredientsLegume.CreateMethod("Jus","liquid");
 
         /*
             création de l'inventaire des ingredients dans le restaurant
@@ -35,21 +44,31 @@ public class TestMenuFact02 {
             Création des inventaire des différent ingrédient
          */
 
-        IngredientInventaire inventaireFruit = new IngredientInventaire(fruit, 5);
-        IngredientInventaire inventaireLegume = new IngredientInventaire(legume, 5);
-        IngredientInventaire inventaireViande = new IngredientInventaire(viande, 5);
-        IngredientInventaire inventaireEpice = new IngredientInventaire(epice, 5);
-        IngredientInventaire inventaireLaitier = new IngredientInventaire(laitier, 5);
+        IngredientInventaire inventaireFruit1 = new IngredientInventaire(fruit1, 150);
+        IngredientInventaire inventaireLegume1 = new IngredientInventaire(legume1, 150);
+        IngredientInventaire inventaireViande1 = new IngredientInventaire(viande1, 150);
+        IngredientInventaire inventaireEpice1 = new IngredientInventaire(epice1, 150);
+        IngredientInventaire inventaireLaitier1 = new IngredientInventaire(laitier1, 150);
+        IngredientInventaire inventaireFruit2 = new IngredientInventaire(fruit2, 150);
+        IngredientInventaire inventaireLegume2 = new IngredientInventaire(legume2, 150);
+        IngredientInventaire inventaireViande2 = new IngredientInventaire(viande2, 150);
+        IngredientInventaire inventaireEpice2 = new IngredientInventaire(epice2, 150);
+        IngredientInventaire inventaireLaitier2 = new IngredientInventaire(laitier2, 150);
 
         /*
             Ajouts des ingredient inventaire à l'inventaire
          */
 
-        inventaireIngrediant.ajouter(inventaireEpice);
-        inventaireIngrediant.ajouter(inventaireViande);
-        inventaireIngrediant.ajouter(inventaireFruit);
-        inventaireIngrediant.ajouter(inventaireLegume);
-        inventaireIngrediant.ajouter(inventaireLaitier);
+        inventaireIngrediant.ajouter(inventaireEpice1);
+        inventaireIngrediant.ajouter(inventaireViande1);
+        inventaireIngrediant.ajouter(inventaireFruit1);
+        inventaireIngrediant.ajouter(inventaireLegume1);
+        inventaireIngrediant.ajouter(inventaireLaitier1);
+        inventaireIngrediant.ajouter(inventaireEpice2);
+        inventaireIngrediant.ajouter(inventaireViande2);
+        inventaireIngrediant.ajouter(inventaireFruit2);
+        inventaireIngrediant.ajouter(inventaireLegume2);
+        inventaireIngrediant.ajouter(inventaireLaitier2);
 
 
         /*
@@ -65,17 +84,17 @@ public class TestMenuFact02 {
         Création des inventaire des différent ingrédient dans un plat
          */
         //P1
-        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,6);
-        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,6);
-        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume,6);
+        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit1,6);
+        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande2,6);
+        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume1,6);
         //p2
-        IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit,1);
-        IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande,1);
-        IngredientInventaire ingredientInventaireLaitierP2 = new IngredientInventaire(laitier,1);
+        IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit2,1);
+        IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande1,1);
+        IngredientInventaire ingredientInventaireLaitierP2 = new IngredientInventaire(laitier2,1);
         //p3
-        IngredientInventaire ingredientInventaireEpicep3 = new IngredientInventaire(epice, 2);
-        IngredientInventaire ingredientInventaireViandep3 = new IngredientInventaire(epice, 2);
-        IngredientInventaire ingredientInventaireFruitp3 = new IngredientInventaire(epice, 2);
+        IngredientInventaire ingredientInventaireEpicep3 = new IngredientInventaire(epice2, 2);
+        IngredientInventaire ingredientInventaireViandep3 = new IngredientInventaire(epice1, 2);
+        IngredientInventaire ingredientInventaireFruitp3 = new IngredientInventaire(laitier2, 2);
         //ajout de l'inventaire à la composition
         //p1
         CompositionP1.ajouter(ingredientInventaireFruitP1);

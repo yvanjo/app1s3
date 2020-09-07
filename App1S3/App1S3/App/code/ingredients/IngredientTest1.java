@@ -8,11 +8,15 @@ import static org.junit.Assert.*;
 
 public class IngredientTest1 {
 
+    /*
     @org.junit.Test
+    */
+
     /*
         Test de validation des quantitées
         il faut s'assurer que toute les méthodes peuvent acceder à leur quantité
      */
+    /*
     public void test1() throws IngredientException {
         Boolean succeed = true;
         Ingredient fruit = Fruit.getInstanceFruit("liquid");
@@ -87,4 +91,6 @@ public class IngredientTest1 {
         assertEquals(true,good);
 
     }
+
+     */
 }

@@ -34,11 +34,12 @@ public class     TestChef {
         }
         assertEquals(true,succeed);
     }
-
+/*
     @org.junit.Test
-    /*
+
         Here Test Chain Of Responsibility
-     */
+
+
     public void test2() throws IngredientException, MenuException, FactureException, ChefException {
         boolean trace = true;
         boolean succeed = true;
@@ -67,9 +68,7 @@ public class     TestChef {
         Inventaire CompositionP4 = new Inventaire();
         Inventaire CompositionP5 = new Inventaire();
 
-        /*
-        Création des inventaire des différent ingrédient dans un plat
-         */
+
         //P1
         IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,170);
         IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,170);
@@ -103,9 +102,7 @@ public class     TestChef {
         CompositionP5.ajouter(ingredientInventaireEpicep3);
         CompositionP5.ajouter(ingredientInventaireViandep3);
         CompositionP5.ajouter(ingredientInventaireFruitp3);
-                /*
-        Création des plats au menu
-         */
+
 
         CreatorPlat createurDePlatAuMenu = new platMenu();
         PlatAuMenu p1 = createurDePlatAuMenu.renderPlat(0,"PlatAuMenu0",10,CompositionP1);
@@ -304,5 +301,6 @@ public class     TestChef {
         assertEquals(true, succeed);
 
     }
+    */
 
 }

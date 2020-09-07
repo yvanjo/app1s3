@@ -13,6 +13,7 @@ import menufact.plats.*;
 import static org.junit.Assert.assertEquals;
 
 public class TestMenu {
+    /*
     @org.junit.Test
     public void Test1() throws IngredientException, MenuException {
         boolean trace = true;
@@ -42,9 +43,7 @@ public class TestMenu {
         Inventaire CompositionP4 = new Inventaire();
         Inventaire CompositionP5 = new Inventaire();
 
-        /*
-        Création des inventaire des différent ingrédient dans un plat
-         */
+
         //P1
         IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,170);
         IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,170);
@@ -78,9 +77,7 @@ public class TestMenu {
         CompositionP5.ajouter(ingredientInventaireEpicep3);
         CompositionP5.ajouter(ingredientInventaireViandep3);
         CompositionP5.ajouter(ingredientInventaireFruitp3);
-                /*
-        Création des plats au menu
-         */
+
 
         CreatorPlat createurDePlatAuMenu = new platMenu();
         PlatAuMenu p1 = createurDePlatAuMenu.renderPlat(0,"PlatAuMenu0",10,CompositionP1);
@@ -392,4 +389,6 @@ public class TestMenu {
 
         assertEquals(true, succeed);
     }
+
+     */
 }
