@@ -4,6 +4,7 @@ import ingredients.IngredientInventaire;
 import ingredients.exceptions.IngredientException;
 import inventaire.Inventaire;
 import menufact.facture.Facture;
+import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatChoisi;
 
 
@@ -29,7 +30,7 @@ public class Chef {
         return instanceChef;
     }
 
-    public void Work(Facture facture, PlatChoisi platChoisi) throws IngredientException, ChefException {
+    public void Work(Facture facture, PlatChoisi platChoisi) throws IngredientException, ChefException, FactureException {
         commandeQueue.add(platChoisi);
         this.facture = facture;
         for (int i = 0; i < commandeQueue.size(); i++
@@ -64,7 +65,7 @@ public class Chef {
         return facture;
     }
 
-    public void setEtatPlatChoisi() throws IngredientException, ChefException {
+    public void setEtatPlatChoisi() throws IngredientException, ChefException, FactureException {
         Handler verification = new VerificationDesIngredients(this);
         Handler preparation = new Preparation(this);
         Handler finalisation = new Finalisation(this);
@@ -110,11 +111,11 @@ class Finalisation implements Handler
 
     }
 
-    public default void callNext() throws IngredientException, ChefException {
+    public default void callNext() throws IngredientException, ChefException, FactureException {
 
     }
 
-    public default void Handle(Chef chief) throws IngredientException, ChefException {
+    public default void Handle(Chef chief) throws IngredientException, ChefException, FactureException {
 
     }
 
@@ -135,12 +136,12 @@ class Finalisation implements Handler
     }
 
     @Override
-    public void callNext() throws ChefException {
+    public void callNext() throws ChefException, FactureException {
         Handle(chef);
     }
 
     @Override
-    public void Handle(Chef chef) throws ChefException {
+    public void Handle(Chef chef) throws ChefException, FactureException {
         chef.getCommandeQueue().remove(chef.getPlat());
         chef.getFacture().RemovePlatDelaFacture(chef.getPlat());
             throw new ChefException("not enough ingredients");
@@ -163,7 +164,7 @@ class Preparation implements Handler {
     }
 
     @Override
-    public void callNext() throws IngredientException, ChefException {
+    public void callNext() throws IngredientException, ChefException, FactureException {
         Handle(this.chef);
         handler.callNext();
     }
@@ -199,7 +200,7 @@ class Preparation implements Handler {
     }
 
      @Override
-    public void callNext() throws IngredientException, ChefException {
+    public void callNext() throws IngredientException, ChefException, FactureException {
         this.Handle(chief);
 
         handler.callNext();
