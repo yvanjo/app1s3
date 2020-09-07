@@ -1,15 +1,19 @@
 package ingredients;
 
-public class Ingredient {
+public class Ingredient implements State{
     private String nom;
     private String description;
     private TypeIngredient typeIngredient;
     private String State;
 
+
     public String getState()
     {
         return State;
     }
+
+    @Override
+    public void doThis(String i){State=i;}
 
     public void setStateIngredient(String s){
         State=s;
@@ -38,4 +42,7 @@ public class Ingredient {
     public void setTypeIngredient(TypeIngredient typeIngredient) {
         this.typeIngredient = typeIngredient;
     }
+
+
+
 }
