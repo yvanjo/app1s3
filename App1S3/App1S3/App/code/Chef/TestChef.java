@@ -34,53 +34,89 @@ public class     TestChef {
         }
         assertEquals(true,succeed);
     }
-/*
+
     @org.junit.Test
 
+    /*
         Here Test Chain Of Responsibility
-
+*/
 
     public void test2() throws IngredientException, MenuException, FactureException, ChefException {
         boolean trace = true;
         boolean succeed = true;
-        Ingredient fruit = Fruit.getInstanceFruit("solide");
-        Ingredient legume = Legume.getInstanceLegume("solide");
-        Ingredient viande = Viande.getInstanceViande("solide");
-        Ingredient laitier  = Laitier.getInstanceLaitier("liquide");
-        Ingredient epice = Epice.getInstanceEpice("solide");
+        CreatorIngredient godOfIngredientsEpice = new ConcretCreatorEpice();
+        CreatorIngredient godOfIngredientsFruit = new ConcretCreatorFruit();
+        CreatorIngredient godOfIngredientsLegume = new ConcretCreatorLegume();
+        CreatorIngredient godOfIngredientsLaitier = new ConcretCreatorLaitier();
+        CreatorIngredient godOfIngredientsViande = new ConcretCreatorViande();
+        Ingredient fruit1 = godOfIngredientsFruit.CreateMethod("Orange",new StateSolide());
+        Ingredient fruit2 = godOfIngredientsFruit.CreateMethod("Jus",new StateLiquide());
+        Ingredient epice1 = godOfIngredientsEpice.CreateMethod("Paprika",new StateLiquide());
+        Ingredient epice2 = godOfIngredientsEpice.CreateMethod("JusEpice",new StateLiquide());
+        Ingredient viande1 = godOfIngredientsViande.CreateMethod("Steak",new StateSolide());
+        Ingredient viande2 = godOfIngredientsViande.CreateMethod("Jambon",new StateSolide());
+        Ingredient laitier1  = godOfIngredientsLaitier.CreateMethod("Lait",new StateLiquide());
+        Ingredient laitier2  = godOfIngredientsLaitier.CreateMethod("Fromage",new StateSolide());
+        Ingredient legume1 = godOfIngredientsLegume.CreateMethod("Carrot",new StateSolide());
+        Ingredient legume2 = godOfIngredientsLegume.CreateMethod("Jus",new StateLiquide());
 
         Inventaire inventaireIngrediant = new Inventaire();
 
-        IngredientInventaire inventaireFruit = new IngredientInventaire(fruit, 150);
-        IngredientInventaire inventaireLegume = new IngredientInventaire(legume, 150);
-        IngredientInventaire inventaireViande = new IngredientInventaire(viande, 150);
-        IngredientInventaire inventaireEpice = new IngredientInventaire(epice, 150);
-        IngredientInventaire inventaireLaitier = new IngredientInventaire(laitier, 150);
+        /*
+            Création des inventaire des différent ingrédient
+         */
 
-        inventaireIngrediant.ajouter(inventaireEpice);
-        inventaireIngrediant.ajouter(inventaireViande);
-        inventaireIngrediant.ajouter(inventaireFruit);
-        inventaireIngrediant.ajouter(inventaireLegume);
-        inventaireIngrediant.ajouter(inventaireLaitier);
+        IngredientInventaire inventaireFruit1 = new IngredientInventaire(fruit1, 150);
+        IngredientInventaire inventaireLegume1 = new IngredientInventaire(legume1, 150);
+        IngredientInventaire inventaireViande1 = new IngredientInventaire(viande1, 150);
+        IngredientInventaire inventaireEpice1 = new IngredientInventaire(epice1, 150);
+        IngredientInventaire inventaireLaitier1 = new IngredientInventaire(laitier1, 150);
+        IngredientInventaire inventaireFruit2 = new IngredientInventaire(fruit2, 150);
+        IngredientInventaire inventaireLegume2 = new IngredientInventaire(legume2, 150);
+        IngredientInventaire inventaireViande2 = new IngredientInventaire(viande2, 150);
+        IngredientInventaire inventaireEpice2 = new IngredientInventaire(epice2, 150);
+        IngredientInventaire inventaireLaitier2 = new IngredientInventaire(laitier2, 150);
+
+        /*
+            Ajouts des ingredient inventaire à l'inventaire
+         */
+
+        inventaireIngrediant.ajouter(inventaireEpice1);
+        inventaireIngrediant.ajouter(inventaireViande1);
+        inventaireIngrediant.ajouter(inventaireFruit1);
+        inventaireIngrediant.ajouter(inventaireLegume1);
+        inventaireIngrediant.ajouter(inventaireLaitier1);
+        inventaireIngrediant.ajouter(inventaireEpice2);
+        inventaireIngrediant.ajouter(inventaireViande2);
+        inventaireIngrediant.ajouter(inventaireFruit2);
+        inventaireIngrediant.ajouter(inventaireLegume2);
+        inventaireIngrediant.ajouter(inventaireLaitier2);
+
+
+        /*
+        Création de la compositions de plats
+         */
         Inventaire CompositionP1 = new Inventaire();
         Inventaire CompositionP2 = new Inventaire();
         Inventaire CompositionP3 = new Inventaire();
         Inventaire CompositionP4 = new Inventaire();
         Inventaire CompositionP5 = new Inventaire();
 
-
+        /*
+        Création des inventaire des différent ingrédient dans un plat
+         */
         //P1
-        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,170);
-        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,170);
-        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume,170);
+        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit1,6);
+        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande2,6);
+        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume1,6);
         //p2
-        IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit,5);
-        IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande,3);
-        IngredientInventaire ingredientInventaireLaitierP2 = new IngredientInventaire(laitier,7);
+        IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit2,1);
+        IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande1,1);
+        IngredientInventaire ingredientInventaireLaitierP2 = new IngredientInventaire(laitier2,1);
         //p3
-        IngredientInventaire ingredientInventaireEpicep3 = new IngredientInventaire(epice, 4);
-        IngredientInventaire ingredientInventaireViandep3 = new IngredientInventaire(epice, 6);
-        IngredientInventaire ingredientInventaireFruitp3 = new IngredientInventaire(epice, 3);
+        IngredientInventaire ingredientInventaireEpicep3 = new IngredientInventaire(epice2, 2);
+        IngredientInventaire ingredientInventaireViandep3 = new IngredientInventaire(epice1, 2);
+        IngredientInventaire ingredientInventaireFruitp3 = new IngredientInventaire(laitier2, 2);
         //ajout de l'inventaire à la composition
         //p1
         CompositionP1.ajouter(ingredientInventaireFruitP1);
@@ -102,22 +138,25 @@ public class     TestChef {
         CompositionP5.ajouter(ingredientInventaireEpicep3);
         CompositionP5.ajouter(ingredientInventaireViandep3);
         CompositionP5.ajouter(ingredientInventaireFruitp3);
+                /*
+        Création des plats au menu
+         */
 
+        platMenuCreate createurDePlatAuMenu = new platMenuCreate();
+        PlatAuMenu p1 = createurDePlatAuMenu.createPlats(0,"PlatAuMenu0",10,CompositionP1);
+        PlatAuMenu p2 = createurDePlatAuMenu.createPlats(1,"PlatAuMenu1",20,CompositionP2);
+        PlatAuMenu p3 = createurDePlatAuMenu.createPlats(2,"PlatAuMenu2",30,CompositionP3);
+        PlatAuMenu p4 = createurDePlatAuMenu.createPlats(3,"PlatAuMenu3",40,CompositionP4);
+        PlatAuMenu p5 = createurDePlatAuMenu.createPlats(4,"PlatAuMenu4",50,CompositionP5);
 
-        CreatorPlat createurDePlatAuMenu = new platMenu();
-        PlatAuMenu p1 = createurDePlatAuMenu.renderPlat(0,"PlatAuMenu0",10,CompositionP1);
-        PlatAuMenu p2 = createurDePlatAuMenu.renderPlat(1,"PlatAuMenu1",20,CompositionP2);
-        PlatAuMenu p3 = createurDePlatAuMenu.renderPlat(2,"PlatAuMenu2",30,CompositionP3);
-        PlatAuMenu p4 = createurDePlatAuMenu.renderPlat(3,"PlatAuMenu3",40,CompositionP4);
-        PlatAuMenu p5 = createurDePlatAuMenu.renderPlat(4,"PlatAuMenu4",50,CompositionP5);
+        platSanteCreate createurDePlatSante = new platSanteCreate();
 
-        CreatorPlat createurDePlatSante = new platSanteCreate();
+        PlatAuMenu ps1 = createurDePlatSante.createPlats(10,"PlatSante0",10,11,11,11,CompositionP1);
+        PlatAuMenu ps2 = createurDePlatSante.createPlats(11,"PlatSante1",20,11,11,11,CompositionP2);
+        PlatAuMenu ps3 = createurDePlatSante.createPlats(12,"PlatSante2",30,11,11,11,CompositionP3);
+        PlatAuMenu ps4 = createurDePlatSante.createPlats(13,"PlatSante3",40,11,11,11,CompositionP4);
+        PlatAuMenu ps5 = createurDePlatSante.createPlats(14,"PlatSante4",50,11,11,11,CompositionP5);
 
-        PlatAuMenu ps1 = createurDePlatSante.renderPlat(10,"PlatSante0",10,11,11,11,CompositionP1);
-        PlatAuMenu ps2 = createurDePlatSante.renderPlat(11,"PlatSante1",20,11,11,11,CompositionP2);
-        PlatAuMenu ps3 = createurDePlatSante.renderPlat(12,"PlatSante2",30,11,11,11,CompositionP3);
-        PlatAuMenu ps4 = createurDePlatSante.renderPlat(13,"PlatSante3",40,11,11,11,CompositionP4);
-        PlatAuMenu ps5 = createurDePlatSante.renderPlat(14,"PlatSante4",50,11,11,11,CompositionP5);
 
 
         Menu m1 = new Menu("menufact.Menu 1");
@@ -301,6 +340,9 @@ public class     TestChef {
         assertEquals(true, succeed);
 
     }
-    */
+
+
+
+
 
 }
