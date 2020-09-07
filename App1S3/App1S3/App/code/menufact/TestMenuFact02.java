@@ -121,6 +121,8 @@ public class TestMenuFact02 {
         Menu m2 = new Menu("menufact.Menu 2");
 
         Chef chef = Chef.getInstance("Domingo", inventaireIngrediant);
+        chef.Subscribe(m1);
+        chef.Subscribe(m2);
 
         Facture f1 = new Facture("Ma facture", chef);
 
@@ -164,7 +166,7 @@ public class TestMenuFact02 {
         {
             System.out.println(me);
         } catch (ChefException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
 
         t.test9_PayerFacture(f1);

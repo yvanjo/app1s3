@@ -50,11 +50,11 @@ public class     TestChef {
 
         Inventaire inventaireIngrediant = new Inventaire();
 
-        IngredientInventaire inventaireFruit = new IngredientInventaire(fruit, 15);
-        IngredientInventaire inventaireLegume = new IngredientInventaire(legume, 15);
-        IngredientInventaire inventaireViande = new IngredientInventaire(viande, 15);
-        IngredientInventaire inventaireEpice = new IngredientInventaire(epice, 15);
-        IngredientInventaire inventaireLaitier = new IngredientInventaire(laitier, 15);
+        IngredientInventaire inventaireFruit = new IngredientInventaire(fruit, 150);
+        IngredientInventaire inventaireLegume = new IngredientInventaire(legume, 150);
+        IngredientInventaire inventaireViande = new IngredientInventaire(viande, 150);
+        IngredientInventaire inventaireEpice = new IngredientInventaire(epice, 150);
+        IngredientInventaire inventaireLaitier = new IngredientInventaire(laitier, 150);
 
         inventaireIngrediant.ajouter(inventaireEpice);
         inventaireIngrediant.ajouter(inventaireViande);
@@ -71,9 +71,9 @@ public class     TestChef {
         Création des inventaire des différent ingrédient dans un plat
          */
         //P1
-        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,17);
-        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,17);
-        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume,17);
+        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit,170);
+        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande,170);
+        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume,170);
         //p2
         IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit,5);
         IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande,3);
@@ -145,6 +145,7 @@ public class     TestChef {
         m2.ajoute(ps4);
 
         m1.position(0);
+        int initialLenght = m1.getMenu().size();
 
         PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());
         try
@@ -156,32 +157,15 @@ public class     TestChef {
             System.out.println("not enough ingredients");
         }
         System.out.println(f1);
-        m1.positionSuivante();
-        if(inventaireEpice.getQuantite() <0)
+        try
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            m1.positionSuivante();
         }
-        if(inventaireLegume.getQuantite() <0)
+        catch(MenuException ME)
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            System.out.println(ME);
         }
-        if(inventaireFruit.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireViande.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireLaitier.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
+
 
 
         PlatChoisi platChoisi1 = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());
@@ -194,32 +178,16 @@ public class     TestChef {
             System.out.println("not enough ingredients");
         }
         System.out.println(f1);
-        m1.positionSuivante();
-        if(inventaireEpice.getQuantite() <0)
+        try
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            m1.positionSuivante();
         }
-        if(inventaireLegume.getQuantite() <0)
+        catch(MenuException ME)
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            System.out.println(ME);
         }
-        if(inventaireFruit.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireViande.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireLaitier.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
+
+
 
         PlatChoisi platChoisi2 = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());
         try
@@ -231,32 +199,16 @@ public class     TestChef {
             System.out.println("not enough ingredients");
         }
         System.out.println(f1);
-        m1.positionSuivante();
-        if(inventaireEpice.getQuantite() <0)
+        try
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            m1.positionSuivante();
         }
-        if(inventaireLegume.getQuantite() <0)
+        catch(MenuException ME)
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            System.out.println(ME);
         }
-        if(inventaireFruit.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireViande.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireLaitier.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
+
+
 
         PlatChoisi platChoisi3 = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());
         try
@@ -268,32 +220,15 @@ public class     TestChef {
             System.out.println("not enough ingredients");
         }
         System.out.println(f1);
-        m2.position(0);
-        if(inventaireEpice.getQuantite() <0)
+        try
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            m2.positionSuivante();
         }
-        if(inventaireLegume.getQuantite() <0)
+        catch(MenuException ME)
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            System.out.println(ME);
         }
-        if(inventaireFruit.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireViande.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireLaitier.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
+
 
         PlatChoisi platChoisi4 = new PlatChoisi(m2.platCourant(),5,m2.platCourant().getComposition());
         try
@@ -305,32 +240,15 @@ public class     TestChef {
             System.out.println("not enough ingredients");
         }
         System.out.println(f1);
-        m2.positionSuivante();
-        if(inventaireEpice.getQuantite() <0)
+        try
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            m2.positionSuivante();
         }
-        if(inventaireLegume.getQuantite() <0)
+        catch(MenuException ME)
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            System.out.println(ME);
         }
-        if(inventaireFruit.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireViande.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireLaitier.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
+
 
         PlatChoisi platChoisi5 = new PlatChoisi(m2.platCourant(),5,m2.platCourant().getComposition());
         try
@@ -342,32 +260,16 @@ public class     TestChef {
             System.out.println("not enough ingredients");
         }
         System.out.println(f1);
-        m2.positionSuivante();
-        if(inventaireEpice.getQuantite() <0)
+        try
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            m1.positionSuivante();
         }
-        if(inventaireLegume.getQuantite() <0)
+        catch(MenuException ME)
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            System.out.println(ME);
         }
-        if(inventaireFruit.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireViande.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireLaitier.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
+
+
         PlatChoisi platChoisi6 = new PlatChoisi(m2.platCourant(),5,m2.platCourant().getComposition());
         try
         {
@@ -378,32 +280,15 @@ public class     TestChef {
             System.out.println("not enough ingredients");
         }
         System.out.println(f1);
-        m2.positionSuivante();
-        if(inventaireEpice.getQuantite() <0)
+        try
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            m2.positionSuivante();
         }
-        if(inventaireLegume.getQuantite() <0)
+        catch(MenuException ME)
         {
-            succeed = false;
-            assertEquals(true,succeed);
+            System.out.println(ME);
         }
-        if(inventaireFruit.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireViande.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireLaitier.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
+
         PlatChoisi platChoisi7 = new PlatChoisi(m2.platCourant(),5,m2.platCourant().getComposition());
         try
         {
@@ -414,31 +299,7 @@ public class     TestChef {
             System.out.println("not enough ingredients");
         }
         System.out.println(f1);
-        if(inventaireEpice.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireLegume.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireFruit.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireViande.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
-        if(inventaireLaitier.getQuantite() <0)
-        {
-            succeed = false;
-            assertEquals(true,succeed);
-        }
+
 
         assertEquals(true, succeed);
 

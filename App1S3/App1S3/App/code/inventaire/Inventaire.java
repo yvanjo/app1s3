@@ -21,6 +21,7 @@ public class Inventaire {
 
     public IngredientInventaire getElementInventaire(int i)
     {
+
         return ingredientsInventaires.get(i);
     }
 

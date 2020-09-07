@@ -12,7 +12,6 @@ public class IngredientTest1 {
     /*
         Test de validation des quantitées
         il faut s'assurer que toute les méthodes peuvent acceder à leur quantité
-        mettre un try catch!!!!!!!!!!!!!!!!!!
      */
     public void test1() throws IngredientException {
         Boolean succeed = true;
@@ -26,6 +25,16 @@ public class IngredientTest1 {
         IngredientInventaire ingredientInventaireLegume = new IngredientInventaire(legume ,123434.60);
         IngredientInventaire ingredientInventaireLaitier = new IngredientInventaire(laitier ,13234.60);
         IngredientInventaire ingredientInventaireEpice = new IngredientInventaire(epice ,234552344546.245);
+
+        try
+        {
+           ingredientInventaireEpice.setQuantite(-124312);
+        }
+        catch(IngredientException IE)
+        {
+            System.out.println("not enough Ingredients");
+        }
+
         if(ingredientInventaireFruit.getQuantite() <=0 && succeed)
         {
             succeed =false;

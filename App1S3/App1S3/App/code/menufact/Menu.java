@@ -1,11 +1,12 @@
 package menufact;
 
+import Chef.Chef;
 import menufact.exceptions.MenuException;
 import menufact.plats.PlatAuMenu;
 
 import java.util.ArrayList;
 
-public class Menu {
+public class Menu implements Subscriber {
     private String description;
     private int courant;
     private ArrayList<PlatAuMenu> plat = new ArrayList<PlatAuMenu>();
@@ -17,6 +18,11 @@ public class Menu {
     public void ajoute(PlatAuMenu p)
     {
         plat.add(p);
+    }
+
+    public ArrayList<PlatAuMenu> getMenu()
+    {
+        return plat;
     }
 
     public void position(int i)
@@ -37,6 +43,11 @@ public class Menu {
             courant++;
     }
 
+    public void retirerPlats(PlatAuMenu p)
+    {
+        plat.remove(p);
+    }
+
     public void positionPrecedente() throws MenuException
     {
         if (courant-1 < 0)
@@ -54,4 +65,11 @@ public class Menu {
                 ", plat=" + "\n" + plat +
                 '}';
     }
+
+    @Override
+    public void envoyer(PlatAuMenu platAuMenu) {
+        this.retirerPlats(platAuMenu);
+    }
 }
+
+

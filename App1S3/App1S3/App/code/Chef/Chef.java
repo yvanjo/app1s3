@@ -3,12 +3,16 @@ package Chef;
 import ingredients.IngredientInventaire;
 import ingredients.exceptions.IngredientException;
 import inventaire.Inventaire;
+import menufact.Menu;
+import menufact.Subscriber;
 import menufact.facture.Facture;
 import menufact.facture.exceptions.FactureException;
+import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 
 
 import java.util.ArrayList;
+import java.util.concurrent.Flow;
 
 public class Chef {
     private static Chef instanceChef;
@@ -17,12 +21,22 @@ public class Chef {
     private PlatChoisi platChoisi;
     private Facture facture;
     private Inventaire inventaire;
+    private ArrayList<Subscriber> subscribers = new ArrayList<Subscriber>();
     private Chef(String nom, Inventaire inventaire)
     {
         this.nom = nom;
         this.inventaire = inventaire;
     }
 
+    public void Subscribe(Subscriber subs)
+    {
+        subscribers.add(subs);
+    }
+
+    public void UnSubscribe(Subscriber subs)
+    {
+        subscribers.remove(subs);
+    }
     public static Chef getInstance (String nom, Inventaire inventaire) {
         if (instanceChef == null) {
             instanceChef = new Chef(nom, inventaire);
@@ -37,6 +51,14 @@ public class Chef {
              ) {
             this.platChoisi = commandeQueue.get(i);
             setEtatPlatChoisi();
+        }
+    }
+
+    void notifier(PlatAuMenu platAuMenu)
+    {
+        for (int i = 0; i < subscribers.size(); i++)
+        {
+            subscribers.get(i).envoyer(platAuMenu);
         }
     }
 
@@ -142,6 +164,7 @@ class Finalisation implements Handler
 
     @Override
     public void Handle(Chef chef) throws ChefException, FactureException {
+
         chef.getCommandeQueue().remove(chef.getPlat());
         chef.getFacture().RemovePlatDelaFacture(chef.getPlat());
             throw new ChefException("not enough ingredients");
@@ -214,8 +237,12 @@ class Preparation implements Handler {
             for (int e = 0; e < Chief.getPlat().getInventaire().getCount(); e++
             ) {
                 if (Chief.getIngredientInventaire(i).getIngredient() == Chief.getPlat().getInventaire().getElementInventaire(e).getIngredient()) {
-                    if (Chief.getIngredientInventaire(i).getQuantite() < Chief.getPlat().getInventaire().getElementInventaire(e).getQuantite()) {
-                        setNext(new Impossible(chief));
+                    if (Chief.getIngredientInventaire(i).getQuantite() < Chief.getPlat().getInventaire().getElementInventaire(e).getQuantite() * Chief.getPlat().getQuantite()) {
+                        setNext(new Impossible(Chief));
+                        if(Chief.getIngredientInventaire(i).getQuantite() < Chief.getPlat().getInventaire().getElementInventaire(e).getQuantite())
+                        {
+                            Chief.notifier(Chief.getPlat().getPlat());
+                        }
                     }
 
                 }
@@ -223,4 +250,5 @@ class Preparation implements Handler {
         }
     }
 }
+
 
