@@ -4,19 +4,18 @@ public class Ingredient implements State{
     private String nom;
     private String description;
     private TypeIngredient typeIngredient;
-    private String State;
+    private State state;
 
 
-    public String getState()
+    public State getState()
     {
-        return State;
+        return state;
     }
 
-    @Override
-    public void doThis(String i){State=i;}
 
-    public void setStateIngredient(String s){
-        State=s;
+
+    public void setStateIngredient(State s){
+        state=s;
     }
 
     public String getNom() {

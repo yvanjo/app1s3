@@ -24,16 +24,16 @@ public class TestMenuFact02 {
         CreatorIngredient godOfIngredientsLegume = new ConcretCreatorLegume();
         CreatorIngredient godOfIngredientsLaitier = new ConcretCreatorLaitier();
         CreatorIngredient godOfIngredientsViande = new ConcretCreatorViande();
-        Ingredient fruit1 = godOfIngredientsFruit.CreateMethod("Orange","solid");
-        Ingredient fruit2 = godOfIngredientsFruit.CreateMethod("Jus","liquid");
-        Ingredient epice1 = godOfIngredientsEpice.CreateMethod("Paprika","liquid");
-        Ingredient epice2 = godOfIngredientsEpice.CreateMethod("JusEpice","solid");
-        Ingredient viande1 = godOfIngredientsViande.CreateMethod("Steak","solid");
-        Ingredient viande2 = godOfIngredientsViande.CreateMethod("Jambon","solid");
-        Ingredient laitier1  = godOfIngredientsLaitier.CreateMethod("Lait","liquid");
-        Ingredient laitier2  = godOfIngredientsLaitier.CreateMethod("Fromage","solid");
-        Ingredient legume1 = godOfIngredientsLegume.CreateMethod("Carrot","solid");
-        Ingredient legume2 = godOfIngredientsLegume.CreateMethod("Jus","liquid");
+        Ingredient fruit1 = godOfIngredientsFruit.CreateMethod("Orange",new StateSolide());
+        Ingredient fruit2 = godOfIngredientsFruit.CreateMethod("Jus",new StateLiquide());
+        Ingredient epice1 = godOfIngredientsEpice.CreateMethod("Paprika",new StateLiquide());
+        Ingredient epice2 = godOfIngredientsEpice.CreateMethod("JusEpice",new StateLiquide());
+        Ingredient viande1 = godOfIngredientsViande.CreateMethod("Steak",new StateSolide());
+        Ingredient viande2 = godOfIngredientsViande.CreateMethod("Jambon",new StateSolide());
+        Ingredient laitier1  = godOfIngredientsLaitier.CreateMethod("Lait",new StateLiquide());
+        Ingredient laitier2  = godOfIngredientsLaitier.CreateMethod("Fromage",new StateSolide());
+        Ingredient legume1 = godOfIngredientsLegume.CreateMethod("Carrot",new StateSolide());
+        Ingredient legume2 = godOfIngredientsLegume.CreateMethod("Jus",new StateLiquide());
 
         /*
             création de l'inventaire des ingredients dans le restaurant
