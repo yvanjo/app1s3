@@ -8,8 +8,8 @@ public class PlatEnfant extends PlatAuMenu{
     public PlatEnfant() {
     }
 
-    public PlatEnfant(int code, String description, double prix,double filler1, double filler2,double proportion, Inventaire Composition) {
-        super(code, description, prix,filler1,filler2, 0.00 ,Composition);
+    public PlatEnfant(int code, String description, double prix,double proportion, Inventaire Composition) {
+        super(code, description, prix,Composition);
         this.proportion = proportion;
     }
 
