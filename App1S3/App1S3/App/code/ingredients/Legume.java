@@ -6,5 +6,6 @@ public class Legume extends Ingredient{
         setNom(nom);
         setStateIngredient(s);
         setTypeIngredient(TypeIngredient.LEGUME);
+        setUnite();
     }
 }

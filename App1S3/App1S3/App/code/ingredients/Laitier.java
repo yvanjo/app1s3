@@ -5,6 +5,7 @@ public class Laitier extends Ingredient {
         setNom(nom);
         setStateIngredient(s);
         setTypeIngredient(TypeIngredient.LAITIER);
+        setUnite();
     }
 
 }

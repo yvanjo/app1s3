@@ -6,6 +6,7 @@ public class Fruit extends Ingredient{
         setNom(nom);
         setStateIngredient(s);
         setTypeIngredient(TypeIngredient.FRUIT);
+        setUnite();
     }
 
 }

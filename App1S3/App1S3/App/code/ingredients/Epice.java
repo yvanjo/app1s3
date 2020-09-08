@@ -6,6 +6,7 @@ public class Epice extends Ingredient {
         setNom(nom);
         setStateIngredient(s);
         setTypeIngredient(TypeIngredient.EPICE);
+        setUnite();
     }
 
 }

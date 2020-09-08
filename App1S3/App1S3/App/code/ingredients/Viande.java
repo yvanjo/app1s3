@@ -6,6 +6,7 @@ public class Viande extends Ingredient{
         setNom(nom);
         setStateIngredient(s);
         setTypeIngredient(TypeIngredient.VIANDE);
+        setUnite();
     }
 
 }

@@ -1,10 +1,11 @@
 package ingredients;
 
-public class Ingredient implements State{
+public class Ingredient{
     private String nom;
     private String description;
     private TypeIngredient typeIngredient;
     private State state;
+    private TypeUnite unite;
 
 
     public State getState()
@@ -12,10 +13,22 @@ public class Ingredient implements State{
         return state;
     }
 
+    public TypeUnite getUnite()
+    {
+        return unite;
+    }
 
+    public void setUnite()
+    {
+      unite = state.setUnit();
+    }
 
     public void setStateIngredient(State s){
-        state=s;
+        if(state == null)
+        {
+            state=s;
+        }
+
     }
 
     public String getNom() {

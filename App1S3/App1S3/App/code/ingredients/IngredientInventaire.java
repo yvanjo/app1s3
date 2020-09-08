@@ -6,7 +6,7 @@ public class IngredientInventaire {
     private Ingredient ingredient;
     private double quantite;
 
-    public    IngredientInventaire(Ingredient ingredient, double quantite) throws IngredientException {
+    public IngredientInventaire(Ingredient ingredient, double quantite) throws IngredientException {
         this.ingredient = ingredient;
         this.setQuantite(quantite);
     }
