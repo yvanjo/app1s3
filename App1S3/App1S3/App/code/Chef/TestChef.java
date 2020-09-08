@@ -13,12 +13,13 @@ import org.junit.ClassRule;
 
 import static org.junit.Assert.*;
 
-public class     TestChef {
+public class TestChef {
 
     @org.junit.Test
-     /*
-        Here we are checking if chef is a singleton
-     */
+ /**
+  * This test checks to see if only one instance of a chef can be created
+  * they compare the hashcode to make sure if it's the same object
+  * */
     public void test1() throws IngredientException {
 
         Inventaire gardeManger = new Inventaire();
@@ -36,15 +37,20 @@ public class     TestChef {
     }
 
     @org.junit.Test
-
-    /*
-        Here Test Chain Of Responsibility
-        this test is extremely long because it needs to load a lot of stuff
-*/
-
+/** Here we test the chain of responsibilities
+ * (1)First we need to instanciate an inventory for the chef this will contain every possible ingredient that the restaurant has
+ * (2)Than we need to instantiate the different dishes
+ * (3) we need to instantiate a cook
+ * (4) we need to instantiate a facture
+ * When a dish is added to the facture it triggers the chain of responsibility
+ * Here the values of quantity are selected to test the different possible out comes
+ * */
     public void test2() throws IngredientException, MenuException, FactureException, ChefException, PlatException {
         boolean trace = true;
         boolean succeed = true;
+        /**
+         * (1)
+         * */
         CreatorIngredient godOfIngredientsEpice = new ConcretCreatorEpice();
         CreatorIngredient godOfIngredientsFruit = new ConcretCreatorFruit();
         CreatorIngredient godOfIngredientsLegume = new ConcretCreatorLegume();
@@ -63,9 +69,7 @@ public class     TestChef {
 
         Inventaire inventaireIngrediant = new Inventaire();
 
-        /*
-            Création des inventaire des différent ingrédient
-         */
+
 
         IngredientInventaire inventaireFruit1 = new IngredientInventaire(fruit1, 150);
         IngredientInventaire inventaireLegume1 = new IngredientInventaire(legume1, 150);
@@ -78,9 +82,7 @@ public class     TestChef {
         IngredientInventaire inventaireEpice2 = new IngredientInventaire(epice2, 150);
         IngredientInventaire inventaireLaitier2 = new IngredientInventaire(laitier2, 150);
 
-        /*
-            Ajouts des ingredient inventaire à l'inventaire
-         */
+
 
         inventaireIngrediant.ajouter(inventaireEpice1);
         inventaireIngrediant.ajouter(inventaireViande1);
@@ -93,55 +95,49 @@ public class     TestChef {
         inventaireIngrediant.ajouter(inventaireLegume2);
         inventaireIngrediant.ajouter(inventaireLaitier2);
 
+        /**
+         * (2)
+         * */
 
-        /*
-        Création de la compositions de plats
-         */
         Inventaire CompositionP1 = new Inventaire();
         Inventaire CompositionP2 = new Inventaire();
         Inventaire CompositionP3 = new Inventaire();
         Inventaire CompositionP4 = new Inventaire();
         Inventaire CompositionP5 = new Inventaire();
 
-        /*
-        Création des inventaire des différent ingrédient dans un plat
-         */
-        //P1
+
         IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit1,170);
         IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande2,170);
         IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume1,170);
-        //p2
+
         IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit2,5);
         IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande1,13);
         IngredientInventaire ingredientInventaireLaitierP2 = new IngredientInventaire(laitier2,10);
-        //p3
+
         IngredientInventaire ingredientInventaireEpicep3 = new IngredientInventaire(epice2, 2);
         IngredientInventaire ingredientInventaireViandep3 = new IngredientInventaire(epice1, 2);
         IngredientInventaire ingredientInventaireFruitp3 = new IngredientInventaire(laitier2, 2);
-        //ajout de l'inventaire à la composition
-        //p1
+
         CompositionP1.ajouter(ingredientInventaireFruitP1);
         CompositionP1.ajouter(ingredientInventaireLegumeP1);
         CompositionP1.ajouter(ingredientInventaireViandeP1);
-        //p2
+
         CompositionP2.ajouter(ingredientInventaireFruitP2);
         CompositionP2.ajouter(ingredientInventaireViandeP2);
         CompositionP2.ajouter(ingredientInventaireLaitierP2);
-        //p3
+
         CompositionP3.ajouter(ingredientInventaireEpicep3);
         CompositionP3.ajouter(ingredientInventaireViandep3);
         CompositionP3.ajouter(ingredientInventaireFruitp3);
-        //p4
+
         CompositionP4.ajouter(ingredientInventaireEpicep3);
         CompositionP4.ajouter(ingredientInventaireViandep3);
         CompositionP4.ajouter(ingredientInventaireFruitp3);
-        //p5
+
         CompositionP5.ajouter(ingredientInventaireEpicep3);
         CompositionP5.ajouter(ingredientInventaireViandep3);
         CompositionP5.ajouter(ingredientInventaireFruitp3);
-                /*
-        Création des plats au menu
-         */
+
 
         platMenuCreate createurDePlatAuMenu = new platMenuCreate();
         PlatAuMenu p1 = createurDePlatAuMenu.createPlats(0,"PlatAuMenu1",10,CompositionP1);
@@ -150,11 +146,19 @@ public class     TestChef {
         PlatAuMenu p4 = createurDePlatAuMenu.createPlats(3,"PlatAuMenu4",40,CompositionP4);
         PlatAuMenu p5 = createurDePlatAuMenu.createPlats(4,"PlatAuMenu5",50,CompositionP5);
 
+        /**
+         *(3)
+         * */
 
         Chef chef = Chef.getInstance("Domingo", inventaireIngrediant);
-
+        /**
+         * 4
+         * */
         Facture f1 = new Facture("Ma facture", chef);
 
+        /**
+         * since p1's composition requieres way more ingredients that the inventory of the restaurant has this will trigger an exception
+         */
         PlatChoisi platChoisi = new PlatChoisi(p1,5,p1.getComposition());
         try
         {
@@ -162,14 +166,16 @@ public class     TestChef {
         }
         catch (FactureException | IngredientException | ChefException fe)
         {
-            System.out.println("not enough ingredients");
+            System.out.println(fe);
         }
         if(f1.getPlatChoisi().contains(platChoisi))
         {
             succeed = false;
         }
 
-
+        /**
+         * These have enought ingredients to be made there for the facture will be contain them
+         */
 
         PlatChoisi platChoisi1 = new PlatChoisi(p2,5,p2.getComposition());
         try
@@ -178,7 +184,7 @@ public class     TestChef {
         }
         catch (FactureException | IngredientException | ChefException fe)
         {
-            System.out.println("not enough ingredients");
+            System.out.println(fe);
 
         }
         if(!f1.getPlatChoisi().contains(platChoisi1))
@@ -195,7 +201,7 @@ public class     TestChef {
         }
         catch (FactureException | IngredientException | ChefException fe)
         {
-            System.out.println("not enough ingredients");
+            System.out.println(fe);
 
         }
         if(!f1.getPlatChoisi().contains(platChoisi2))
@@ -212,7 +218,7 @@ public class     TestChef {
         }
         catch (FactureException | IngredientException | ChefException fe)
         {
-            System.out.println("not enough ingredients");
+            System.out.println(fe);
 
         }
         if(!f1.getPlatChoisi().contains(platChoisi3))
@@ -228,7 +234,7 @@ public class     TestChef {
         }
         catch (FactureException | IngredientException | ChefException fe)
         {
-            System.out.println("not enough ingredients");
+            System.out.println(fe);
 
         }
         if(!f1.getPlatChoisi().contains(platChoisi4))
@@ -240,8 +246,8 @@ public class     TestChef {
         assertEquals(true, succeed);
     }
     @org.junit.Test
-    /*
-    Subscribe
+    /**
+     * This Test check if we can Subscribe a menu to the chef
      */
     public void Test3() throws PlatException {
         Boolean succeed =true;
@@ -257,8 +263,8 @@ public class     TestChef {
 
     }
     @org.junit.Test
-    /*
-    Subscribe
+    /**
+     * this test check if we can unsubscribe a menu from a chef
      */
     public void Test4() throws PlatException {
         Boolean succeed =true;
@@ -275,8 +281,10 @@ public class     TestChef {
 
     }
     @org.junit.Test
-    /*
-        Test Observer
+    /**
+     * this test checks if the observer patterns work
+     * first we subscribe a menu to the chef
+     * than we call the notify method to see if the menu removes the dish from it
      */
     public void Test5() throws PlatException {
         Boolean succeed =true;
