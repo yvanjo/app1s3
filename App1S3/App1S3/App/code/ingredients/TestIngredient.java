@@ -3,7 +3,7 @@ package ingredients;
 import static org.junit.Assert.*;
 import ingredients.exceptions.IngredientException;
 
-public class TestIngredientPhilippe {
+public class TestIngredient {
     @org.junit.Test
     /**
      * this test checks if the factory method works.
