@@ -7,7 +7,6 @@ import menufact.plats.PlatAuMenu;
 public class PlatChoisi {
     private PlatAuMenu plat;
     private int quantite;
-
     private Inventaire inventaire;
     public PlatChoisi(PlatAuMenu plat, int quantite, Inventaire inventaire) {
         this.plat = plat;

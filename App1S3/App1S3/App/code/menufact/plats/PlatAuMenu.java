@@ -8,7 +8,7 @@ public class PlatAuMenu {
     private double prix;
     private Inventaire composition;
 
-    public PlatAuMenu(int code, String description, double prix, double filler1, double filler2, double filler3, Inventaire composition) {
+    public PlatAuMenu(int code, String description, double prix, Inventaire composition) {
         this.code = code;
         this.description = description;
         this.prix = prix;
