@@ -8,9 +8,9 @@ public class PlatEnfant extends PlatAuMenu{
     public PlatEnfant() {
     }
 
-    public PlatEnfant(int code, String description, double prix,double proportion, Inventaire Composition) {
+    public PlatEnfant(int code, String description, double prix,double proportion, Inventaire Composition) throws PlatException {
         super(code, description, prix,Composition);
-        this.proportion = proportion;
+        setProportion(proportion);
     }
 
     @Override
@@ -23,5 +23,16 @@ public class PlatEnfant extends PlatAuMenu{
         return "PlatEnfant{" +
                 "proportion=" + proportion +
                 "} " + super.toString();
+    }
+
+    public void setProportion(double proportion) throws PlatException {
+        if(proportion < 0)
+        {
+            throw new PlatException(" proportion is under 0");
+        }
+        else {
+                this.proportion = proportion;
+        }
+
     }
 }

@@ -104,4 +104,13 @@ public class TestIngredientPhilippe {
             Ingredient epice1 = godOfIngredientsEpice.CreateMethod("Paprika",new StateLiquide());
             assertEquals(TypeUnite.ML,epice1.getUnite());
         }
+
+    @org.junit.Test
+    /*
+    verifier que l'on ne peut pas avoir de quantité negative dans les ingredients inventaire
+     */
+    public void Test4()
+    {
+
+    }
 }

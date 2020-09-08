@@ -12,7 +12,7 @@ import inventaire.Inventaire;
 
 public class TestMenuFact02 {
 
-    public static void main(String[] args) throws IngredientException, FactureException {
+    public static void main(String[] args) throws IngredientException, FactureException, PlatException {
         boolean trace = true;
 
         TestMenuFact02 t = new TestMenuFact02();
@@ -135,6 +135,13 @@ public class TestMenuFact02 {
         PlatAuMenu ps4 = createurDePlatSante.createPlats(13,"PlatSante3",40,11,11,11,CompositionP4);
         PlatAuMenu ps5 = createurDePlatSante.createPlats(14,"PlatSante4",50,11,11,11,CompositionP5);
 
+        platEnfantCreate createurDePlatEnfant = new platEnfantCreate();
+
+        PlatAuMenu pe1 = createurDePlatEnfant.createPlats(20,"chicken nuggets",10,0.25,CompositionP1);
+        PlatAuMenu pe2 = createurDePlatEnfant.createPlats(21,"chicken nuggets",10,0.5,CompositionP2);
+        PlatAuMenu pe3 = createurDePlatEnfant.createPlats(22,"chicken nuggets",10,0.75,CompositionP3);
+        PlatAuMenu pe4 = createurDePlatEnfant.createPlats(23,"chicken nuggets",10,0.5,CompositionP4);
+        PlatAuMenu pe5 = createurDePlatEnfant.createPlats(24,"chicken nuggets",10,0.25,CompositionP5);
 
         Menu m1 = new Menu("menufact.Menu 1");
         Menu m2 = new Menu("menufact.Menu 2");
@@ -150,8 +157,10 @@ public class TestMenuFact02 {
 
         t.test1_AffichePlatsAuMenu(trace, p1,p2,p3,p4,p5);
         t.test2_AffichePlatsSante(trace, ps1,ps2,ps3,ps4,ps5);
+        t.test2_AffichePlatsEnfant(trace, pe1,pe2,pe3,pe4,pe5);
 
-        t.test4_AjoutPlatsAuMenu(trace, m1, p1, p2, ps1, ps2, m2, p3, p4, ps3, ps4);
+        t.test4_AjoutPlatsAuMenu(trace, m1, p1, p2, ps1, ps2, pe2, m2, p3, p4, ps3, ps4, pe3);
+
 
 
         try {
@@ -247,6 +256,20 @@ public class TestMenuFact02 {
             System.out.println(ps5);
         }
     }
+    private void test2_AffichePlatsEnfant(boolean trace, PlatAuMenu ps1, PlatAuMenu ps2,
+                                          PlatAuMenu ps3, PlatAuMenu ps4, PlatAuMenu ps5)
+    {
+        System.out.println("=== test2_AffichePlatsSante");
+
+        if(trace)
+        {
+            System.out.println(ps1);
+            System.out.println(ps2);
+            System.out.println(ps3);
+            System.out.println(ps4);
+            System.out.println(ps5);
+        }
+    }
 
 
     private static void test3_AjoutMenu(boolean trace, Menu m1, Menu m2)
@@ -263,10 +286,10 @@ public class TestMenuFact02 {
 
     private void test4_AjoutPlatsAuMenu(boolean trace, Menu m1,
                                         PlatAuMenu p1, PlatAuMenu p2,
-                                        PlatAuMenu ps1, PlatAuMenu ps2,
+                                        PlatAuMenu ps1, PlatAuMenu ps2, PlatAuMenu pe3,
                                         Menu m2,
                                         PlatAuMenu p3, PlatAuMenu p4,
-                                        PlatAuMenu ps3, PlatAuMenu ps4)
+                                        PlatAuMenu ps3, PlatAuMenu ps4, PlatAuMenu pe5)
     {
         System.out.println("=== test4_AjoutPlatsAuMenu");
         System.out.println("=== Ajout de plats au menu 1");
@@ -274,6 +297,7 @@ public class TestMenuFact02 {
         m1.ajoute(p2);
         m1.ajoute(ps1);
         m1.ajoute(ps2);
+        m1.ajoute(pe3);
 
 
         System.out.println("=== Ajout de plats au menu 2");
@@ -281,6 +305,7 @@ public class TestMenuFact02 {
         m2.ajoute(p4);
         m2.ajoute(ps3);
         m2.ajoute(ps4);
+        m2.ajoute(pe5);
 
         if(trace) {
             System.out.println(m1);

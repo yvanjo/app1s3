@@ -9,6 +9,7 @@ import menufact.Client;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
+import menufact.plats.PlatException;
 import menufact.plats.platMenuCreate;
 
 import static org.junit.Assert.*;
@@ -18,7 +19,7 @@ public class TestFacture {
     /*
     Test ajouter plat
      */
-    public void Test1() throws IngredientException, ChefException, FactureException {
+    public void Test1() throws IngredientException, ChefException, FactureException, PlatException {
 
         Inventaire Composition =new Inventaire();
         platMenuCreate platMenu = new platMenuCreate();
@@ -42,7 +43,7 @@ public class TestFacture {
     /*
     Test retirer un plat
      */
-    public void Test2() throws FactureException {
+    public void Test2() throws FactureException, PlatException {
         Inventaire Composition =new Inventaire();
         platMenuCreate platMenu = new platMenuCreate();
         PlatAuMenu monPlatAuMenu = platMenu.createPlats(1,"un bon risoto",20.00,Composition);
@@ -67,7 +68,7 @@ public class TestFacture {
     /*
     Test associer client
      */
-    public void Test3() throws FactureException {
+    public void Test3() throws FactureException, PlatException {
         Inventaire Composition =new Inventaire();
         platMenuCreate platMenu = new platMenuCreate();
         PlatAuMenu monPlatAuMenu = platMenu.createPlats(1,"un bon risoto",20.00,Composition);
@@ -82,7 +83,7 @@ public class TestFacture {
     /*
     Changer d'etat
      */
-    public void Test4() throws FactureException {
+    public void Test4() throws FactureException, PlatException {
         Boolean succeed =true;
         Inventaire Composition =new Inventaire();
         platMenuCreate platMenu = new platMenuCreate();

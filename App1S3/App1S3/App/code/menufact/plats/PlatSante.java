@@ -8,11 +8,12 @@ public class   PlatSante extends PlatAuMenu {
     private double chol;
     private double gras;
 
-    public PlatSante(int code, String description, double prix, double kcal, double chol, double gras, Inventaire Composition) {
+    public PlatSante(int code, String description, double prix, double kcal, double chol, double gras, Inventaire Composition) throws PlatException {
         super(code, description, prix,Composition);
-        this.kcal = kcal;
-        this.chol = chol;
-        this.gras = gras;
+        setChol(chol);
+        setKcal(kcal);
+        setGras(gras);
+
     }
 
     public PlatSante() {
@@ -42,5 +43,33 @@ public class   PlatSante extends PlatAuMenu {
 
     public double getGras() {
         return gras;
+    }
+
+    private void setKcal(double kcal) throws PlatException {
+        if(kcal < 0)
+        {
+            throw new PlatException("kcal can't be under 0");
+        }
+        else{
+            this.kcal = kcal;
+        }
+    }
+    private void setChol(double Chol) throws PlatException {
+        if(Chol < 0)
+        {
+            throw new PlatException("Chol can't be under 0");
+        }
+        else{
+            this.chol = Chol;
+        }
+    }
+    private void setGras(double Gras) throws PlatException {
+        if(Gras < 0)
+        {
+            throw new PlatException("Gras can't be under 0");
+        }
+        else{
+            this.gras = Gras;
+        }
     }
 }

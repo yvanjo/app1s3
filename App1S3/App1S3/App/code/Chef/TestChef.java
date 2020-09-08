@@ -42,7 +42,7 @@ public class     TestChef {
         this test is extremely long because it needs to load a lot of stuff
 */
 
-    public void test2() throws IngredientException, MenuException, FactureException, ChefException {
+    public void test2() throws IngredientException, MenuException, FactureException, ChefException, PlatException {
         boolean trace = true;
         boolean succeed = true;
         CreatorIngredient godOfIngredientsEpice = new ConcretCreatorEpice();
@@ -107,13 +107,13 @@ public class     TestChef {
         Création des inventaire des différent ingrédient dans un plat
          */
         //P1
-        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit1,6);
-        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande2,6);
-        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume1,6);
+        IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit1,170);
+        IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande2,170);
+        IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume1,170);
         //p2
-        IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit2,1);
-        IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande1,1);
-        IngredientInventaire ingredientInventaireLaitierP2 = new IngredientInventaire(laitier2,1);
+        IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit2,5);
+        IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande1,13);
+        IngredientInventaire ingredientInventaireLaitierP2 = new IngredientInventaire(laitier2,10);
         //p3
         IngredientInventaire ingredientInventaireEpicep3 = new IngredientInventaire(epice2, 2);
         IngredientInventaire ingredientInventaireViandep3 = new IngredientInventaire(epice1, 2);
@@ -144,47 +144,18 @@ public class     TestChef {
          */
 
         platMenuCreate createurDePlatAuMenu = new platMenuCreate();
-        PlatAuMenu p1 = createurDePlatAuMenu.createPlats(0,"PlatAuMenu0",10,CompositionP1);
-        PlatAuMenu p2 = createurDePlatAuMenu.createPlats(1,"PlatAuMenu1",20,CompositionP2);
-        PlatAuMenu p3 = createurDePlatAuMenu.createPlats(2,"PlatAuMenu2",30,CompositionP3);
-        PlatAuMenu p4 = createurDePlatAuMenu.createPlats(3,"PlatAuMenu3",40,CompositionP4);
-        PlatAuMenu p5 = createurDePlatAuMenu.createPlats(4,"PlatAuMenu4",50,CompositionP5);
+        PlatAuMenu p1 = createurDePlatAuMenu.createPlats(0,"PlatAuMenu1",10,CompositionP1);
+        PlatAuMenu p2 = createurDePlatAuMenu.createPlats(1,"PlatAuMenu2",20,CompositionP2);
+        PlatAuMenu p3 = createurDePlatAuMenu.createPlats(2,"PlatAuMenu3",30,CompositionP3);
+        PlatAuMenu p4 = createurDePlatAuMenu.createPlats(3,"PlatAuMenu4",40,CompositionP4);
+        PlatAuMenu p5 = createurDePlatAuMenu.createPlats(4,"PlatAuMenu5",50,CompositionP5);
 
-        platSanteCreate createurDePlatSante = new platSanteCreate();
-
-        PlatAuMenu ps1 = createurDePlatSante.createPlats(10,"PlatSante0",10,11,11,11,CompositionP1);
-        PlatAuMenu ps2 = createurDePlatSante.createPlats(11,"PlatSante1",20,11,11,11,CompositionP2);
-        PlatAuMenu ps3 = createurDePlatSante.createPlats(12,"PlatSante2",30,11,11,11,CompositionP3);
-        PlatAuMenu ps4 = createurDePlatSante.createPlats(13,"PlatSante3",40,11,11,11,CompositionP4);
-        PlatAuMenu ps5 = createurDePlatSante.createPlats(14,"PlatSante4",50,11,11,11,CompositionP5);
-
-
-
-        Menu m1 = new Menu("menufact.Menu 1");
-        Menu m2 = new Menu("menufact.Menu 2");
 
         Chef chef = Chef.getInstance("Domingo", inventaireIngrediant);
 
         Facture f1 = new Facture("Ma facture", chef);
 
-        Client c1 = new Client(1,"Mr Client","1234567890");
-
-        m1.ajoute(p1);
-        m1.ajoute(p2);
-        m1.ajoute(ps1);
-        m1.ajoute(ps2);
-
-
-        System.out.println("=== Ajout de plats au menu 2");
-        m2.ajoute(p3);
-        m2.ajoute(p4);
-        m2.ajoute(ps3);
-        m2.ajoute(ps4);
-
-        m1.position(0);
-        int initialLenght = m1.getMenu().size();
-
-        PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());
+        PlatChoisi platChoisi = new PlatChoisi(p1,5,p1.getComposition());
         try
         {
             f1.ajoutePlat(platChoisi);
@@ -193,19 +164,14 @@ public class     TestChef {
         {
             System.out.println("not enough ingredients");
         }
-        System.out.println(f1);
-        try
+        if(f1.getPlatChoisi().contains(platChoisi))
         {
-            m1.positionSuivante();
-        }
-        catch(MenuException ME)
-        {
-            System.out.println(ME);
+            succeed = false;
         }
 
 
 
-        PlatChoisi platChoisi1 = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());
+        PlatChoisi platChoisi1 = new PlatChoisi(p2,5,p2.getComposition());
         try
         {
             f1.ajoutePlat(platChoisi1);
@@ -213,20 +179,16 @@ public class     TestChef {
         catch (FactureException | IngredientException | ChefException fe)
         {
             System.out.println("not enough ingredients");
+
         }
-        System.out.println(f1);
-        try
+        if(!f1.getPlatChoisi().contains(platChoisi1))
         {
-            m1.positionSuivante();
-        }
-        catch(MenuException ME)
-        {
-            System.out.println(ME);
+            succeed = false;
         }
 
 
 
-        PlatChoisi platChoisi2 = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());
+        PlatChoisi platChoisi2 = new PlatChoisi(p3,5,p3.getComposition());
         try
         {
             f1.ajoutePlat(platChoisi2);
@@ -234,20 +196,16 @@ public class     TestChef {
         catch (FactureException | IngredientException | ChefException fe)
         {
             System.out.println("not enough ingredients");
+
         }
-        System.out.println(f1);
-        try
+        if(!f1.getPlatChoisi().contains(platChoisi2))
         {
-            m1.positionSuivante();
-        }
-        catch(MenuException ME)
-        {
-            System.out.println(ME);
+            succeed =false;
         }
 
 
 
-        PlatChoisi platChoisi3 = new PlatChoisi(m1.platCourant(),5,m1.platCourant().getComposition());
+        PlatChoisi platChoisi3 = new PlatChoisi(p4,5,p4.getComposition());
         try
         {
             f1.ajoutePlat(platChoisi3);
@@ -255,19 +213,15 @@ public class     TestChef {
         catch (FactureException | IngredientException | ChefException fe)
         {
             System.out.println("not enough ingredients");
+
         }
-        System.out.println(f1);
-        try
+        if(!f1.getPlatChoisi().contains(platChoisi3))
         {
-            m2.positionSuivante();
-        }
-        catch(MenuException ME)
-        {
-            System.out.println(ME);
+            succeed = false;
         }
 
 
-        PlatChoisi platChoisi4 = new PlatChoisi(m2.platCourant(),5,m2.platCourant().getComposition());
+        PlatChoisi platChoisi4 = new PlatChoisi(p5,5,p5.getComposition());
         try
         {
             f1.ajoutePlat(platChoisi4);
@@ -275,67 +229,12 @@ public class     TestChef {
         catch (FactureException | IngredientException | ChefException fe)
         {
             System.out.println("not enough ingredients");
-        }
-        System.out.println(f1);
-        try
-        {
-            m2.positionSuivante();
-        }
-        catch(MenuException ME)
-        {
-            System.out.println(ME);
-        }
 
-
-        PlatChoisi platChoisi5 = new PlatChoisi(m2.platCourant(),5,m2.platCourant().getComposition());
-        try
-        {
-            f1.ajoutePlat(platChoisi5);
         }
-        catch (FactureException | IngredientException | ChefException fe)
+        if(!f1.getPlatChoisi().contains(platChoisi4))
         {
-            System.out.println("not enough ingredients");
+            succeed = false;
         }
-        System.out.println(f1);
-        try
-        {
-            m1.positionSuivante();
-        }
-        catch(MenuException ME)
-        {
-            System.out.println(ME);
-        }
-
-
-        PlatChoisi platChoisi6 = new PlatChoisi(m2.platCourant(),5,m2.platCourant().getComposition());
-        try
-        {
-            f1.ajoutePlat(platChoisi6);
-        }
-        catch (FactureException | IngredientException | ChefException fe)
-        {
-            System.out.println("not enough ingredients");
-        }
-        System.out.println(f1);
-        try
-        {
-            m2.positionSuivante();
-        }
-        catch(MenuException ME)
-        {
-            System.out.println(ME);
-        }
-
-        PlatChoisi platChoisi7 = new PlatChoisi(m2.platCourant(),5,m2.platCourant().getComposition());
-        try
-        {
-            f1.ajoutePlat(platChoisi7);
-        }
-        catch (FactureException | IngredientException | ChefException fe)
-        {
-            System.out.println("not enough ingredients");
-        }
-        System.out.println(f1);
 
 
         assertEquals(true, succeed);
@@ -344,8 +243,7 @@ public class     TestChef {
     /*
     Subscribe
      */
-    public void Test3()
-    {
+    public void Test3() throws PlatException {
         Boolean succeed =true;
         Inventaire Composition =new Inventaire();
         Inventaire GardeManger = new Inventaire();
@@ -362,8 +260,7 @@ public class     TestChef {
     /*
     Subscribe
      */
-    public void Test4()
-    {
+    public void Test4() throws PlatException {
         Boolean succeed =true;
         Inventaire Composition =new Inventaire();
         Inventaire GardeManger = new Inventaire();
@@ -381,8 +278,7 @@ public class     TestChef {
     /*
         Test Observer
      */
-    public void Test5()
-    {
+    public void Test5() throws PlatException {
         Boolean succeed =true;
         Inventaire Composition =new Inventaire();
         Inventaire GardeManger = new Inventaire();

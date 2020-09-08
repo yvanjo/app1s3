@@ -2,6 +2,8 @@ package inventaire;
 
 import ingredients.Ingredient;
 import ingredients.IngredientInventaire;
+import menufact.Subscriber;
+import menufact.plats.PlatAuMenu;
 
 import java.util.ArrayList;
 
@@ -21,7 +23,6 @@ public class Inventaire {
 
     public IngredientInventaire getElementInventaire(int i)
     {
-
         return ingredientsInventaires.get(i);
     }
 

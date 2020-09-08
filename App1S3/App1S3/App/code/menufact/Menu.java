@@ -43,6 +43,11 @@ public class Menu implements Subscriber {
             courant++;
     }
 
+    public int getPosition()
+    {
+        return courant;
+    }
+
     public void retirerPlats(PlatAuMenu p)
     {
         plat.remove(p);

@@ -8,10 +8,10 @@ public class PlatAuMenu {
     private double prix;
     private Inventaire composition;
 
-    public PlatAuMenu(int code, String description, double prix, Inventaire composition) {
-        this.code = code;
+    public PlatAuMenu(int code, String description, double prix, Inventaire composition) throws PlatException {
+        setCode(code);
         this.description = description;
-        this.prix = prix;
+        setPrix(prix);
         this.composition = composition;
     }
 
@@ -41,8 +41,14 @@ public class PlatAuMenu {
         return code;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setCode(int code) throws PlatException {
+        if(code < 0)
+        {
+            throw new PlatException("code ne peut pas etre plus petit que 0");
+        }
+        else{
+            this.code =code;
+        }
     }
 
     public String getDescription() {
@@ -57,7 +63,13 @@ public class PlatAuMenu {
         return prix;
     }
 
-    public void setPrix(double prix) {
-        this.prix = prix;
+    public void setPrix(double prix) throws PlatException {
+        if(prix <0)
+        {
+            throw new PlatException("Le prix ne peut pas etre inferieur à 0");
+        }
+        else{
+            this.prix = prix;
+        }
     }
 }
