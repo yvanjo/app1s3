@@ -3,13 +3,19 @@ package ingredients;
 import static org.junit.Assert.*;
 import ingredients.exceptions.IngredientException;
 
-public class TestIngredientPhilippe {
+public class TestIngredient {
     @org.junit.Test
-    /*
-    Tester la factory de l'ingredient
+    /**
+     * this test checks if the factory method works.
+     * (1) it loads it creats different ingredients via some concret creators
+     * (2) it puts them in an inventory of ingredients
+     *(3) it checks if the ingredients in it is the same as the instance of the ingredient
      */
     public void Test1() throws IngredientException {
         Boolean succeed = true;
+        /**
+         * (1)
+         */
         CreatorIngredient godOfIngredientsEpice = new ConcretCreatorEpice();
         CreatorIngredient godOfIngredientsFruit = new ConcretCreatorFruit();
         CreatorIngredient godOfIngredientsLegume = new ConcretCreatorLegume();
@@ -26,6 +32,9 @@ public class TestIngredientPhilippe {
         Ingredient legume1 = godOfIngredientsLegume.CreateMethod("Carrot",new StateSolide());
         Ingredient legume2 = godOfIngredientsLegume.CreateMethod("Jus",new StateLiquide());
 
+        /**
+         * (2)
+         */
         IngredientInventaire inventaireFruit1 = new IngredientInventaire(fruit1, 150);
         IngredientInventaire inventaireLegume1 = new IngredientInventaire(legume1, 150);
         IngredientInventaire inventaireViande1 = new IngredientInventaire(viande1, 150);
@@ -37,6 +46,9 @@ public class TestIngredientPhilippe {
         IngredientInventaire inventaireEpice2 = new IngredientInventaire(epice2, 150);
         IngredientInventaire inventaireLaitier2 = new IngredientInventaire(laitier2, 150);
 
+        /**
+         * (3)
+         */
         if(inventaireFruit1.getIngredient().hashCode() != fruit1.hashCode())
         {
             succeed = false;
@@ -81,9 +93,9 @@ public class TestIngredientPhilippe {
     }
 
         @org.junit.Test
-    /*
-    blocker les changements des etats
-     */
+/**
+ * This Test check if the state is solide or liquide it makes sure that you can change the state
+ */
         public void Test2()
         {
             CreatorIngredient godOfIngredientsEpice = new ConcretCreatorEpice();
@@ -95,8 +107,8 @@ public class TestIngredientPhilippe {
         }
 
         @org.junit.Test
-        /*
-        Changement unite
+        /**
+         * this test checks if the states returns the right type of units
          */
         public void Test3()
         {
@@ -106,11 +118,27 @@ public class TestIngredientPhilippe {
         }
 
     @org.junit.Test
-    /*
-    verifier que l'on ne peut pas avoir de quantité negative dans les ingredients inventaire
+    /**
+     * This test makes sure that we can't have negative quantity value in the inventory
      */
-    public void Test4()
-    {
+    public void Test4() throws IngredientException {
+        boolean succes = true;
+        CreatorIngredient godOfIngredientsEpice = new ConcretCreatorEpice();
+        Ingredient epice1 = godOfIngredientsEpice.CreateMethod("Paprika",new StateLiquide());
+        IngredientInventaire inventaireEpice1 = new IngredientInventaire(epice1, 150);
 
+        try
+        {
+            inventaireEpice1.setQuantite(-1);
+        }
+        catch(IngredientException ie)
+        {
+            System.out.println(ie);
+        }
+        if(inventaireEpice1.getQuantite()<0)
+        {
+            succes = false;
+        }
+        assertEquals(true,succes);
     }
 }

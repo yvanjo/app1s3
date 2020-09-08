@@ -12,10 +12,18 @@ import static org.junit.Assert.*;
 public class PlatTest {
 
     @org.junit.Test
-    /*
-    Factory des plats
+    /**
+     * this Test checks if we enter can negative data in the creation methods and still instantiate an object
+     * (1) Create ingredients
+     * (2) Create Compositions
+     * (3) Create Ingredient Inventaire
+     * (4) Add Ingredient Inventaire to composition
+     * (5) Create dishes
      */
     public void test1() throws IngredientException, PlatException {
+        /**
+         * (1)
+         */
         CreatorIngredient godOfIngredientsEpice = new ConcretCreatorEpice();
         CreatorIngredient godOfIngredientsFruit = new ConcretCreatorFruit();
         CreatorIngredient godOfIngredientsLegume = new ConcretCreatorLegume();
@@ -32,41 +40,44 @@ public class PlatTest {
         Ingredient legume1 = godOfIngredientsLegume.CreateMethod("Carrot",new StateSolide());
         Ingredient legume2 = godOfIngredientsLegume.CreateMethod("Jus",new StateLiquide());
 
+        /**
+         * (2)
+         */
         Inventaire CompositionP1 = new Inventaire();
         Inventaire CompositionP2 = new Inventaire();
         Inventaire CompositionP3 = new Inventaire();
         Inventaire CompositionP4 = new Inventaire();
         Inventaire CompositionP5 = new Inventaire();
 
-        /*
-        Création des inventaire des différent ingrédient dans un plat
+        /**
+         * (3)
          */
-        //P1
         IngredientInventaire ingredientInventaireFruitP1 = new IngredientInventaire(fruit1,6);
         IngredientInventaire ingredientInventaireViandeP1 = new IngredientInventaire(viande2,6);
         IngredientInventaire ingredientInventaireLegumeP1 = new IngredientInventaire(legume1,6);
-        //p2
+
         IngredientInventaire ingredientInventaireFruitP2 = new IngredientInventaire(fruit2,1);
         IngredientInventaire ingredientInventaireViandeP2 = new IngredientInventaire(viande1,1);
         IngredientInventaire ingredientInventaireLaitierP2 = new IngredientInventaire(laitier2,1);
-        //p3
+
         IngredientInventaire ingredientInventaireEpicep3 = new IngredientInventaire(epice2, 2);
         IngredientInventaire ingredientInventaireViandep3 = new IngredientInventaire(epice1, 2);
         IngredientInventaire ingredientInventaireFruitp3 = new IngredientInventaire(laitier2, 2);
-        //ajout de l'inventaire à la composition
-        //p1
+        /**
+         * (4)
+         */
         CompositionP1.ajouter(ingredientInventaireFruitP1);
         CompositionP1.ajouter(ingredientInventaireLegumeP1);
         CompositionP1.ajouter(ingredientInventaireViandeP1);
-        //p2
+
         CompositionP2.ajouter(ingredientInventaireFruitP2);
         CompositionP2.ajouter(ingredientInventaireViandeP2);
         CompositionP2.ajouter(ingredientInventaireLaitierP2);
-        //p3
+
         CompositionP3.ajouter(ingredientInventaireEpicep3);
         CompositionP3.ajouter(ingredientInventaireViandep3);
         CompositionP3.ajouter(ingredientInventaireFruitp3);
-        //p4
+
         CompositionP4.ajouter(ingredientInventaireEpicep3);
         CompositionP4.ajouter(ingredientInventaireViandep3);
         CompositionP4.ajouter(ingredientInventaireFruitp3);
@@ -75,6 +86,9 @@ public class PlatTest {
         CompositionP5.ajouter(ingredientInventaireViandep3);
         CompositionP5.ajouter(ingredientInventaireFruitp3);
 
+        /**
+         * (5)
+         */
         platMenuCreate createurDePlatAuMenu = new platMenuCreate();
 
         try{
